@@ -7,4 +7,8 @@ class Product(models.Model):
     size = models.FloatField()
     price = models.IntegerField()
     description = models.TextField()
+<<<<<<< HEAD
     date_added = models.DateField(auto_now_add=True, name="date_added")
+=======
+    date_added = models.DateField(auto_now_add=True)
+>>>>>>> 9ab20b349401b9a085ac9a0a73561a22a80a4a0e

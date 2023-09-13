@@ -57,7 +57,12 @@
 
 - [x] **Membuat sebuah routing pada `urls.py` aplikasi `main` untuk memetakan fungsi yang telah dibuat pada `views.py`.**
     
+<<<<<<< HEAD
     Pembuatan *routing* pada `urls.py` aplikasi `main` dilakukan dengan pembuatan *file* `urls.py` dalam *folder* `main`. Setelah itu, lakukan impor `path` dari `django.urls` dan impor `show_main` dari `main.views`. Definisikan `app_name` dengan `'main'` untuk memberikan nama unik pada pola URL aplikasi dan buatlah varibel `urlpatterns` menjadi:
+=======
+    Pembuatan *routing* pada `urls.py` aplikasi `main` dilakukan dengan pembuatan *file* `urls.py` dalam *folder* `main`.
+Setelah itu, lakukan impor `path` dari `django.urls` dan impor `show_main` dari `main.views`. Definisikan `app_name` dengan `'main'` untuk memberikan nama unik pada pola URL aplikasi dan buatlah varibel `urlpatterns` menjadi:
+>>>>>>> 9ab20b349401b9a085ac9a0a73561a22a80a4a0e
     ```
     urlpatterns = [
         path('', show_main, name='show_main'),
@@ -79,6 +84,7 @@
 <img width="2142" alt="Flowchart Django" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/fcf6bebf-0c9b-49e7-b0d5-2ce05c7030db">
 
 ### 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
+<<<<<<< HEAD
 
     *Virtual environment* adalah *tools* untuk mengisolasi *package* dan *dependencies* pada suatu proyek. Dengan *virtual environment*, kita dapat mengerjakan banyak proyek aplikasi dengan kebutuhan *library* beragam tanpa harus mengganggu proyek aplikasi lainnya. Dengan kata lain, *virtual environment* akan membuat pengelolaan dependensi proyek menjadi lebih mudah dan efisien.
 
@@ -105,9 +111,40 @@
         - *View*: Bertanggung jawab menentukan struktur, tata letak, teks, gambar, dan elemen antarmuka lainnya yang nantinya dilihat oleh pengguna.
         - *ViewModel*: *Layer ViewModel* berada di antara *layer View* dan *Model*, dan berfungsi sebagai penghubung keduanya. 
         Alur proses MVVM adalah *ViewModel* mendapatkan *input* dari *View* mengenai aktivitas pengguna, dan melakukan *2-way data binding*. Perubahan pada elemen dalam kumpulan data secara otomatis diperbarui dalam kumpulan data terikat, dan menentukan fungsi UI. Setelah mendapatkan data, *ViewModel* meneruskannya ke *layer Model* untuk dimanipulasi dan disimpan. Perubahan status yang terjadi selama proses tersebut akan diumumkan melalui notifikasi perubahan dan akan dikirimkan data yang diperbarui ke *View* untuk ditampilkan kembali kepada pengguna.
+=======
+*Virtual environment* adalah *tools* untuk mengisolasi *package* dan *dependencies* pada suatu proyek. Dengan *virtual environment*, kita dapat mengerjakan banyak proyek aplikasi dengan kebutuhan *library* beragam tanpa harus mengganggu proyek aplikasi lainnya. Dengan kata lain, *virtual environment* akan membuat pengelolaan dependensi proyek menjadi lebih mudah dan efisien.
+
+Pembuatan aplikasi *web* berbasis Django tetap bisa dilakukan tanpa menggunakan *virtual environment*, namun akan menjadi lebih sulit karena terdapat beberapa potensi masalah yang dapat muncul seperti, salah satunya adalah tabrakan antara proyek satu dengan proyek lainnya, khususnya jika keduanya memiliki dependensi yang berbeda. Oleh karena itu, penggunaan *virtual environment* dalam pembuatan aplikasi web berbasis Django sangatlah dianjurkan.
+
+### 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+a. **MVC (Model-View-Controller)**:
+MVC adalah sebuah konsep arsitektur yang membagi kode pada aplikasi menjadi tiga komponen sehingga pemeliharaan dan pengoptimalan sistem menjadi lebih mudah. Cara kerja ini populer disebut dengan *separation of concerns*. 
+* *Model*: Mengelola dan berhubungan langsung dengan *database*.
+* *View*: Menyajikan tampilan informasi kepada pengguna
+* *Controller*: Menghubungkan *Model* dan *Vview* dalam setiap proses *request* dari *user*. 
+Alur kerja MVC yaitu *Controller* berinteraksi dengan *user*, lalu meneruskan perintah *user* ke *model* untuk menampilkan data yang diminta. Selanjutnya *model* akan memberikan data tersebut ke *Controller* agar ditampilkan oleh *View*. 
+
+b. **MVT (Model-View-Template)**:
+MVT adalah sebuah konsep arsitektur yang digunakan dalam pengembangan web untuk memisahkan komponen-komponen utama dari sebuah aplikasi. Konsep ini memungkinkan pengembang web untuk mengorganisasi dan mengelola kode dengan lebih terstruktur.
+* *Model*: Menyimpan data dan logika aplikasi.
+* *View*: Menampilkan data dari *Model* dan menghubungkannya dengan *Template*.
+* *Template*: Menentukan tampilan antarmuka pengguna.
+Alur kerja MVT yaitu permintaan yang masuk ke dalam *server* akan diproses melalui *urls* untuk diteruskan ke *View* yang didefinisikan oleh pengembang untuk memproses permintaan tersebut. Apabila terdapat proses yang membutuhkan keterlibatan *database*, maka nantinya *View* akan memanggil *query* ke *Model* dan *database* akan mengembalikan hasil dari *query* tersebut ke *View*. Setelah permintaan telah selesai diproses, hasil proses tersebut akan dipetakan ke dalam HTML yang sudah didefinisikan sebelum akhirnya HTML tersebut dikembalikan ke pengguna sebagai *respons*.
+
+c. **MVVM (Model-View-ViewModel)**:
+MVVM adalah sebuah arsitektur atau pola desain *software*, yang memisahkan logika bisnis dengan logika presentasi atau kontrol antarmuka pengguna (UI) menjadi tiga lapisan sehingga membuat aplikasi lebih mudah dikembangkan dan diuji karena minim masalah. 
+- *Model*: Menyimpan logika bisnis dan data aplikasi.
+- *View*: Bertanggung jawab menentukan struktur, tata letak, teks, gambar, dan elemen antarmuka lainnya yang nantinya dilihat oleh pengguna.
+- *ViewModel*: *Layer ViewModel* berada di antara *layer View* dan *Model*, dan berfungsi sebagai penghubung keduanya. 
+Alur proses MVVM adalah *ViewModel* mendapatkan *input* dari *View* mengenai aktivitas pengguna, dan melakukan *2-way data binding*. Perubahan pada elemen dalam kumpulan data secara otomatis diperbarui dalam kumpulan data terikat, dan menentukan fungsi UI. Setelah mendapatkan data, *ViewModel* meneruskannya ke *layer Model* untuk dimanipulasi dan disimpan. Perubahan status yang terjadi selama proses tersebut akan diumumkan melalui notifikasi perubahan dan akan dikirimkan data yang diperbarui ke *View* untuk ditampilkan kembali kepada pengguna.
+>>>>>>> 9ab20b349401b9a085ac9a0a73561a22a80a4a0e
 
 **Perbedaan antara MVC, MVT dan MVVM:**
 Ketiga pola arsitektur di atas memiliki komponen *Model* dan *View*, namun ketiganya memiliki tiga alur kerja yang berbeda. Perbedaan tersebut adalah sebagai berikut:
 - Pada MVC, terdapat *Controller* yang berfungsi sebagai pengontrol interaksi atau media penghubung antara *Model* dan *View*.
 - Pada MVT, ia serupa dengan MVC namun MVT memanfaatkan *Template* sebagai elemen terpisah yang mengatur tampilan antarmuka pengguna.
+<<<<<<< HEAD
 - Pada MVVM, terdapat *ViewModel* yang berperan sebagai mediator pengelola tampilan serta interaksi pengguna.
+=======
+- Pada MVVM, terdapat *ViewModel* yang berperan sebagai mediator pengelola tampilan serta interaksi pengguna.
+>>>>>>> 9ab20b349401b9a085ac9a0a73561a22a80a4a0e
