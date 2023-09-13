@@ -7,4 +7,4 @@ class Product(models.Model):
     size = models.FloatField()
     price = models.IntegerField()
     description = models.TextField()
-    date_added = models.DateField(auto_now_add=True)
+    date_added = models.DateField(auto_now_add=True, name="date_added")
