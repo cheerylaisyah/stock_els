@@ -327,18 +327,39 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     ]
 
     ```
+    ### 5. Hasil akses URL pada Postman
+    - HTML
+      <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7ad010e-4a7a-4d55-9697-2da2bf110c4a">
+
+    - XML
+      <img width="960" alt="XML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b7cf1e90-51cf-44a9-a4cc-81cf06ce946c">
+    
+    - JSON
+      <img width="960" alt="JSON" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9397d92-7dfc-4921-aa19-ebefa6c0ffa3">
+
+    - XML *by* ID
+      <img width="960" alt="XML by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/73b26d67-adb9-4213-a289-d8e4f84c132f">
+
+    - JSON *by* ID
+      <img width="960" alt="JSON by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9d30b18-c314-4343-8023-19fdcf99171c">
+
+    ### 6. Melakukan add-commit-push ke GitHub.
+    Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
+
+### Referensi
+Dimas, S. (2019, September 17). Perbedaan Method GET dan POST! Kapan sebaiknya digunakan ? Kelas Programmer. Retrieved September 18, 2023, from https://kelasprogrammer.com/perbedaan-method-get-dan-post-kapan-digunakan/
+
+JSON for Web Applications: Benefits and Drawbacks. (2023, August 25). LinkedIn. Retrieved September 18, 2023, from https://www.linkedin.com/advice/3/what-benefits-drawbacks-using-json-data
+
+JSON vs XML. (2022, November 11). AppMaster. Retrieved September 18, 2023, from https://appmaster.io/id/blog/json-vs-xml-id
+
+JSON vs XML - Perbedaan Antara Berbagai Representasi Data - AWS. (n.d.). Amazon AWS. Retrieved September 18, 2023, from https://aws.amazon.com/id/compare/the-difference-between-json-xml/
+
+Panduan Perbedaan XML dan HTML yang Wajib Kamu Ketahui. (2021, December 23). Exabytes. Retrieved September 18, 2023, from https://www.exabytes.co.id/blog/perbedaan-xml-dan-html/
+
+Perbedaan Method POST dan GET Beserta Fungsinya. (2016, November 6). Makinrajin. Retrieved September 18, 2023, from https://makinrajin.com/blog/perbedaan-post-dan-get/
+
+Unlocking the Power of JSON Data Type in Web Development. (2023, April 22). LinkedIn. Retrieved September 18, 2023, from https://www.linkedin.com/pulse/unlocking-power-json-data-type-web-development-elvin-shahsuvarli
 </details>
 
-### 5. Hasil akses URL pada Postman
-- HTML
 
-- XML
-
-- JSON
-
-- XML *by* ID
-
-- JSON *by* ID
-
-### 6. Melakukan add-commit-push ke GitHub.
-Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
