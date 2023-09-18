@@ -14,9 +14,9 @@ class mainTest(TestCase):
     def create_product(self):
         self.product = Product.objects.create(
             name = "Nike Air Force 1",
-            amount = 10,
+            amount = 2000000,
             size = 39.5,
-            price = 2000000,
+            qty = 10,
             description = "Full white"
         )
         return self.product

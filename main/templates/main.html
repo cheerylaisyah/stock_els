@@ -1,6 +1,45 @@
-<h1 style="text-align: center; color:brown; background-color: beige"><strong><i>STOCK ELS</i></strong></h1>
-<h2 style="text-align: center; color: palevioletred;">Inventory Page</h2>
+{% extends 'base.html' %}
 
-<h4 style="font-family: Georgia;">Name: {{ my_name }} </h4>
-<h4 style="font-family: Georgia;">NPM: {{ my_npm }} </h4>
-<h4 style="font-family: Georgia">Class: {{ my_class }} </h4>
+{% block content %}
+    <h1 style="text-align: center; color:brown; background-color: beige"><strong><i>STOCK ELS</i></strong></h1>
+    <h2 style="text-align: center; color: palevioletred;">Inventory Page</h2>
+
+    <h4 style="font-family: Georgia;">Name: {{ my_name }} </h4>
+    <h4 style="font-family: Georgia;">NPM: {{ my_npm }} </h4>
+    <h4 style="font-family: Georgia">Class: {{ my_class }} </h4>
+
+    ...
+<h2>List Stock</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Size</th>
+        <th>Qty</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for product in products %}
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.amount}}</td>
+            <td>{{product.size}}</td>
+            <td>{{product.qty}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.date_added}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
