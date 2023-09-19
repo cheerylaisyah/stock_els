@@ -329,7 +329,7 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     ```
     ### 5. Hasil akses URL pada Postman
     - HTML
-      <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7ad010e-4a7a-4d55-9697-2da2bf110c4a">
+      <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7467225-f05f-4682-941a-0f7bf3371cf4">
 
     - XML
       <img width="960" alt="XML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b7cf1e90-51cf-44a9-a4cc-81cf06ce946c">
