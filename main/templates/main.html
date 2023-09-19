@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 style="text-align: center; color:brown; background-color: beige"><strong><i>STOCK ELS</i></strong></h1>
-    <h2 style="text-align: center; color: palevioletred;">Inventory Page</h2>
+    <h1 style="text-align: center; color:rgb(117, 31, 31); background-color: beige"><strong><i>STOCK ELS</i></strong></h1>
+    <h2 style="color: palevioletred;">Inventory Page</h2>
 
     <h4 style="font-family: Georgia;">Name: {{ my_name }} </h4>
     <h4 style="font-family: Georgia;">NPM: {{ my_npm }} </h4>
     <h4 style="font-family: Georgia">Class: {{ my_class }} </h4>
 
     ...
-<h2>List Stock</h2>
-<table>
-    <tr>
+<h2 style="text-align: center; background-color: rgb(237, 237, 237)">Kamu memiliki {{ total_products }} jenis produk yang tersimpan pada aplikasi ini!</h2>
+<table style="width: 100%" cellspacing="5" border="1">
+    <tr bgcolor="#e66457">
         <th>Name</th>
         <th>Amount</th>
         <th>Size</th>
