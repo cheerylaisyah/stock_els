@@ -5,7 +5,6 @@
     <h2 style="color: palevioletred;">Inventory Page</h2>
 
     <h4 style="font-family: Georgia;">Name: {{ my_name }} </h4>
-    <!-- <h4 style="font-family: Georgia;">NPM: {{ my_npm }} </h4> remove for Tugas 4-->
     <h4 style="font-family: Georgia">Class: {{ my_class }} </h4>
 
     <!-- menambahkan pesan untuk bonus -->
@@ -17,8 +16,10 @@
         <th>Price</th>
         <th>Size</th>
         <th>Amount</th>
+        <th>Change Item Amount</th>
         <th>Description</th>
         <th>Date Added</th>
+       
     </tr>
 
     {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
@@ -27,10 +28,32 @@
         <tr>
             <td>{{item.name}}</td>
             <td>Rp{{item.price}}</td>
-            <td>{{item.size}}</td>
-            <td>{{item.amount}}</td>
+            <td style="text-align: center;">{{item.size}}</td>
+            <td style="text-align: center;">{{item.amount}}</td>
+            <!-- menambahkan button tentang amount item sebagai bonus -->
+            <td style="text-align: center;">
+                <form action="{% url 'main:increment_item' item.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="increment">
+                        +
+                    </button>
+                </form>
+                <form action="{% url 'main:decrement_item' item.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="decrement">
+                        -
+                    </button>
+                </form>
+                <form action="{% url 'main:remove_item' item.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="remove">
+                        Remove
+                    </button>
+                </form>
+            </td>
             <td>{{item.description}}</td>
             <td>{{item.date_added}}</td>
+            
         </tr>
     {% endfor %}
 </table>

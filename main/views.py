@@ -16,13 +16,10 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
-    # items = Item.objects.all()
     total_items = items.count()
 
     context = {
         'my_name': request.user.username,
-        # 'my_name': 'Cheeryl Aisyah Retnowibowo',
-        # 'my_npm' : '2206813706',
         'my_class': 'PBP C',
         'items' : items,
         'total_items' : total_items,
@@ -38,10 +35,11 @@ def create_item(request):
         # Tugas 4
         item = form.save(commit=False)
         item.user = request.user
-        item.save()      # before tugas 4 --> form.save()
+        item.save()    
         return HttpResponseRedirect(reverse('main:show_main'))
 
     context = {'form': form}
+
     return render(request, "create_item.html", context)
 
 def show_xml(request):
@@ -70,7 +68,9 @@ def register(request):
             form.save()
             messages.success(request, 'Your account has been successfully created!')
             return redirect('main:login')
+    
     context = {'form':form}
+
     return render(request, 'register.html', context)
 
 def login_user(request):
@@ -85,11 +85,41 @@ def login_user(request):
             return response
         else:
             messages.info(request, 'Sorry, incorrect username or password. Please try again.')
+    
     context = {}
+
     return render(request, 'login.html', context)
 
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
+
     return response
+
+# Menambahkan satu item
+def decrement_item(request, id):
+    item = Item.objects.get(id=id)
+
+    if (item.amount > 0):
+        item.amount -= 1
+        item.save()
+        if item.amount <= 0:
+           Item.objects.filter(pk=id).delete()
+
+    return HttpResponseRedirect(reverse("main:show_main"))
+
+# Mengurangi satu item
+def increment_item(request, id):
+    item = Item.objects.get(id=id)
+
+    item.amount += 1
+    item.save()
+    
+    return HttpResponseRedirect(reverse("main:show_main"))
+
+# Menghapus item
+def remove_item(request, id):
+    Item.objects.filter(pk=id).delete()
+
+    return HttpResponseRedirect(reverse("main:show_main"))
