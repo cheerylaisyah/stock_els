@@ -194,7 +194,9 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
             fields = ["name", "amount", "size", "qty", "description"]
     ```
     - *ketika data dari *form* disimpan, isi dari *form* akan disimpan menjadi objek `Product`*
-    5. Dalam `views.py` dalam folder `main`, tambahakan import baru dan fungsi baru `create_product` dengan parameter `request`, dan ubah fungsi `show_main`:
+
+- [x] **Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**
+    1. Untuk menampilkan objek dalam format HTML, pada `views.py` dalam folder `main`, tambahkan import baru dan fungsi baru `create_product` dengan parameter `request`, dan ubah fungsi `show_main`:
     ```
     from django.http import HttpResponseRedirect
     from main.forms import ProductForm
@@ -224,8 +226,7 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     - `form.save()` --> membuat dan menyimpan data dari *form*.
     - `return HttpResponseRedirect(reverse('main:show_main'))` --> melakukan *redirect* setelah data *form* berhasil disimpan.
     - `Product.objects.all()` --> mengambil seluruh object Product yang tersimpan pada *database*.
-    6. Pada `urls.py` yang ada dalam *folder* `main`, lalu *import* fungsi `create_product` dan tambahkan *path url* ke dalam `urlpatterns`.
-    7. Buat file `create_product.html` pada folder `main/templates` dan isi dengan kode berikut:
+    2. Buat file `create_product.html` pada folder `main/templates` dan isi dengan kode berikut:
     ```
     {% extends 'base.html' %} 
 
@@ -251,7 +252,7 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     - `{% csrf_token %}` --> token yang berfungsi sebagai *security*
     - `{{ form.as_table }}` --> menampilkan *fields form* yang telah dibuat pada `forms.py` sebagai *table*
     - `<input type="submit" value="Add Product"/>` --> tombol *submit* untuk mengirimkan *request* ke *view* `create_product(request)`.
-    8. Untuk menampilkan data produk dalam bentuk *table* serta tombol `Add New Product` yang akan *redirect* ke halaman *form* dengan menambahkan kode di bawah ini di antara `{% block content %}` dan `{% endblock content %}`:
+    3. Untuk menampilkan data produk dalam bentuk *table* serta tombol `Add New Product` yang akan *redirect* ke halaman *form* dengan menambahkan kode di bawah ini di antara `{% block content %}` dan `{% endblock content %}`:
     ```
     ...
     <table>
@@ -263,8 +264,6 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
         <th>Description</th>
         <th>Date Added</th>
     </tr>
-
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
     {% for product in products %}
         <tr>
@@ -286,10 +285,7 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
         </button>
     </a>
     ```
-
-
-- [x] **Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**
-    1. Pada `views.py` dalam folder `main` tambahkan import dan fungsi di bawah ini:
+    4. Untuk menampilkan objek dalam format XML, JSON, XML *by* ID, dan JSON *by* ID, buka kembali `views.py` dalam folder `main` lalu tambahkan import dan fungsi di bawah ini:
     ```
     from django.http import HttpResponse
     from django.core import serializers
@@ -329,23 +325,24 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     ```
 ### 5. Hasil akses URL pada Postman
 - HTML
-    <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7ad010e-4a7a-4d55-9697-2da2bf110c4a">
+  <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7467225-f05f-4682-941a-0f7bf3371cf4">
 
 - XML
-    <img width="960" alt="XML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b7cf1e90-51cf-44a9-a4cc-81cf06ce946c">
+  <img width="960" alt="XML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b7cf1e90-51cf-44a9-a4cc-81cf06ce946c">
 
 - JSON
-    <img width="960" alt="JSON" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9397d92-7dfc-4921-aa19-ebefa6c0ffa3">
+  <img width="960" alt="JSON" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9397d92-7dfc-4921-aa19-ebefa6c0ffa3">
 
 - XML *by* ID
-    <img width="960" alt="XML by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/73b26d67-adb9-4213-a289-d8e4f84c132f">
+  <img width="960" alt="XML by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/73b26d67-adb9-4213-a289-d8e4f84c132f">
 
 - JSON *by* ID
-    <img width="960" alt="JSON by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9d30b18-c314-4343-8023-19fdcf99171c">
+  <img width="960" alt="JSON by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9d30b18-c314-4343-8023-19fdcf99171c">
 
 ### 6. Melakukan add-commit-push ke GitHub.
 Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
 
+========
 ### Referensi
 Dimas, S. (2019, September 17). Perbedaan Method GET dan POST! Kapan sebaiknya digunakan ? Kelas Programmer. Retrieved September 18, 2023, from https://kelasprogrammer.com/perbedaan-method-get-dan-post-kapan-digunakan/
 
@@ -385,4 +382,3 @@ Unlocking the Power of JSON Data Type in Web Development. (2023, April 22). Link
 ### 6. Melakukan add-commit-push ke GitHub.
 Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
 </details>
-
