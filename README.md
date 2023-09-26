@@ -327,24 +327,24 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     ]
 
     ```
-    ### 5. Hasil akses URL pada Postman
-    - HTML
-      <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7ad010e-4a7a-4d55-9697-2da2bf110c4a">
+### 5. Hasil akses URL pada Postman
+- HTML
+    <img width="960" alt="HTML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/e7ad010e-4a7a-4d55-9697-2da2bf110c4a">
 
-    - XML
-      <img width="960" alt="XML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b7cf1e90-51cf-44a9-a4cc-81cf06ce946c">
-    
-    - JSON
-      <img width="960" alt="JSON" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9397d92-7dfc-4921-aa19-ebefa6c0ffa3">
+- XML
+    <img width="960" alt="XML" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b7cf1e90-51cf-44a9-a4cc-81cf06ce946c">
 
-    - XML *by* ID
-      <img width="960" alt="XML by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/73b26d67-adb9-4213-a289-d8e4f84c132f">
+- JSON
+    <img width="960" alt="JSON" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9397d92-7dfc-4921-aa19-ebefa6c0ffa3">
 
-    - JSON *by* ID
-      <img width="960" alt="JSON by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9d30b18-c314-4343-8023-19fdcf99171c">
+- XML *by* ID
+    <img width="960" alt="XML by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/73b26d67-adb9-4213-a289-d8e4f84c132f">
 
-    ### 6. Melakukan add-commit-push ke GitHub.
-    Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
+- JSON *by* ID
+    <img width="960" alt="JSON by ID" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/b9d30b18-c314-4343-8023-19fdcf99171c">
+
+### 6. Melakukan add-commit-push ke GitHub.
+Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
 
 ### Referensi
 Dimas, S. (2019, September 17). Perbedaan Method GET dan POST! Kapan sebaiknya digunakan ? Kelas Programmer. Retrieved September 18, 2023, from https://kelasprogrammer.com/perbedaan-method-get-dan-post-kapan-digunakan/
@@ -362,4 +362,27 @@ Perbedaan Method POST dan GET Beserta Fungsinya. (2016, November 6). Makinrajin.
 Unlocking the Power of JSON Data Type in Web Development. (2023, April 22). LinkedIn. Retrieved September 18, 2023, from https://www.linkedin.com/pulse/unlocking-power-json-data-type-web-development-elvin-shahsuvarli
 </details>
 
+<details>
+<summary><b>Tugas 4</h1></b></summary>
+
+### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+### 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+### 3. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+### 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- [x] **Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.**
+
+- [x] **Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.**
+
+- [x] **Menghubungkan model Item dengan User.**
+
+- [x] **Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.**
+
+### 6. Melakukan add-commit-push ke GitHub.
+Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
+</details>
 

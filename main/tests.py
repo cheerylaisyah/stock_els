@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from main.models import Product
+from main.models import Item
 from datetime import date
 
 class mainTest(TestCase):
@@ -11,22 +11,22 @@ class mainTest(TestCase):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
 
-    def create_product(self):
-        self.product = Product.objects.create(
+    def create_item(self):
+        self.item = Item.objects.create(
             name = "Nike Air Force 1",
-            amount = 2000000,
+            price = 2000000,
             size = 39.5,
-            qty = 10,
+            amount = 10,
             description = "Full white"
         )
-        return self.product
+        return self.item
 
-    # memeriksa apakah object Product berhasil dibuat
-    def test_product_creation(self):
-        new_product = self.create_product()
-        self.assertTrue(isinstance(new_product, Product))
+    # memeriksa apakah object Item berhasil dibuat
+    def test_item_creation(self):
+        new_item = self.create_item()
+        self.assertTrue(isinstance(new_item, Item))
 
     # memeriksa date_added sesuai dengan tanggal Product dibuat
     def test_date_added(self):
-        new_product = self.create_product()
-        self.assertIsInstance(getattr(new_product, 'date_added'), type(date.today()))
+        new_item = self.create_item()
+        self.assertIsInstance(getattr(new_item, 'date_added'), type(date.today()))
