@@ -186,24 +186,24 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     4. Untuk membuat struktur *form* yang dapat menerima data produk baru, buat *file* baru dalam *folder* `main` dengan nama `forms.py` dengan kode:
     ```
     from django.forms import ModelForm
-    from main.models import Product
+    from main.models import Item
 
-    class ProductForm(ModelForm):
+    class ItemForm(ModelForm):
         class Meta:
-            model = Product 
+            model = Item
             fields = ["name", "amount", "size", "qty", "description"]
     ```
-    - *ketika data dari *form* disimpan, isi dari *form* akan disimpan menjadi objek `Product`*
+    - *ketika data dari *form* disimpan, isi dari *form* akan disimpan menjadi objek `Item`*
 
 - [x] **Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**
-    1. Untuk menampilkan objek dalam format HTML, pada `views.py` dalam folder `main`, tambahkan import baru dan fungsi baru `create_product` dengan parameter `request`, dan ubah fungsi `show_main`:
+    1. Untuk menampilkan objek dalam format HTML, pada `views.py` dalam folder `main`, tambahkan import baru dan fungsi baru `create_item` dengan parameter `request`, dan ubah fungsi `show_main`:
     ```
     from django.http import HttpResponseRedirect
-    from main.forms import ProductForm
+    from main.forms import ItemForm
     from django.urls import reverse
 
     def show_main(request):
-        products = Product.objects.all()
+        items = Item.objects.all()
 
         context = {
            ...
@@ -211,27 +211,27 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
 
         return render(request, "main.html", context)
 
-    def create_product(request):
-        form = ProductForm(request.POST or None)
+    def create_item(request):
+        form = ItemForm(request.POST or None)
 
         if form.is_valid() and request.method == "POST":
             form.save()
             return HttpResponseRedirect(reverse('main:show_main'))
 
         context = {'form': form}
-        return render(request, "create_product.html", context)
+        return render(request, "create_item.html", context)
     ```
-    - `form = ProductForm(request.POST or None)` --> membuat `ProductForm` baru dengan memasukkan QueryDict berdasarkan input *user* pada `request.POST`
+    - `form = ItemForm(request.POST or None)` --> membuat `ItemForm` baru dengan memasukkan QueryDict berdasarkan input *user* pada `request.POST`
     - `form.is_valid()` --> memvalidasi isi input dari *form*.
     - `form.save()` --> membuat dan menyimpan data dari *form*.
     - `return HttpResponseRedirect(reverse('main:show_main'))` --> melakukan *redirect* setelah data *form* berhasil disimpan.
-    - `Product.objects.all()` --> mengambil seluruh object Product yang tersimpan pada *database*.
-    2. Buat file `create_product.html` pada folder `main/templates` dan isi dengan kode berikut:
+    - `Item.objects.all()` --> mengambil seluruh object Item yang tersimpan pada *database*.
+    2. Buat file `create_item.html` pada folder `main/templates` dan isi dengan kode berikut:
     ```
     {% extends 'base.html' %} 
 
     {% block content %}
-    <h1>Add New Product</h1>
+    <h1>Add New Item</h1>
 
     <form method="POST">
         {% csrf_token %}
@@ -240,7 +240,7 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Add Product"/>
+                    <input type="submit" value="Add Item"/>
                 </td>
             </tr>
         </table>
@@ -251,8 +251,8 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     - `<form method="POST">` --> menandakan *block* untuk *form* dengan metode POST.
     - `{% csrf_token %}` --> token yang berfungsi sebagai *security*
     - `{{ form.as_table }}` --> menampilkan *fields form* yang telah dibuat pada `forms.py` sebagai *table*
-    - `<input type="submit" value="Add Product"/>` --> tombol *submit* untuk mengirimkan *request* ke *view* `create_product(request)`.
-    3. Untuk menampilkan data produk dalam bentuk *table* serta tombol `Add New Product` yang akan *redirect* ke halaman *form* dengan menambahkan kode di bawah ini di antara `{% block content %}` dan `{% endblock content %}`:
+    - `<input type="submit" value="Add Item"/>` --> tombol *submit* untuk mengirimkan *request* ke *view* `create_item(request)`.
+    3. Untuk menampilkan data produk dalam bentuk *table* serta tombol `Add New Item` yang akan *redirect* ke halaman *form* dengan menambahkan kode di bawah ini di antara `{% block content %}` dan `{% endblock content %}`:
     ```
     ...
     <table>
@@ -265,23 +265,23 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
         <th>Date Added</th>
     </tr>
 
-    {% for product in products %}
+    {% for item in items %}
         <tr>
-            <td>{{product.name}}</td>
-            <td>{{product.amount}}</td>
-            <td>{{product.size}}</td>
-            <td>{{product.qty}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.date_added}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.size}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date_added}}</td>
         </tr>
     {% endfor %}
     </table>
 
     <br />
 
-    <a href="{% url 'main:create_product' %}">
+    <a href="{% url 'main:create_item' %}">
         <button>
-            Add New Product
+            Add New Item
         </button>
     </a>
     ```
@@ -291,19 +291,19 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     from django.core import serializers
 
     def show_xml(request):
-        data = Product.objects.all()
+        data = Item.objects.all()
         return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
     def show_json(request):
-        data = Product.objects.all()
+        data = Item.objects.all()
         return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
     def show_xml_by_id(request, id):
-        data = Product.objects.filter(pk=id)
+        data = Item.objects.filter(pk=id)
         return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
 
     def show_json_by_id(request, id):
-        data = Product.objects.filter(pk=id)
+        data = Item.objects.filter(pk=id)
         return HttpResponse(serializers.serialize("json", data), content_type="application/json")
     ```
 
@@ -311,11 +311,11 @@ JSON didukung oleh JavaScript, yaitu bahasa pemrograman yang paling banyak digun
     1. Pada `urls.py` dalam folder `main`, import fungsi yang telah ditambahkan sebelumnya dan tambahkan *path url* ke dalam `urlpatterns` untuk mengakses fungsi yang telah diimpor hingga kode menjadi seperti di bawah ini:
     ```
     ...
-    from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+    from main.views import show_main, create_item, show_xml, show_json, show_xml_by_id, show_json_by_id
     ...
     urlpatterns = [
     path('', show_main, name='show_main'),
-    path('create-product', create_product, name='create_product'),
+    path('create-item', create_item, name='create_item'),
     path('xml/', show_xml, name='show_xml'),
     path('json/', show_json, name='show_json'),
     path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
@@ -363,37 +363,49 @@ Unlocking the Power of JSON Data Type in Web Development. (2023, April 22). Link
 <summary><b>Tugas 4</h1></b></summary>
 
 ### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
-Django UserCreationForm adalah impor form bawaan dari Django yang memudahkan pembuatan form pendaftaran user dalam aplikasi web. UserCreationForm memiliki tiga fields yaitu username, password, confirmation password. Dengan form ini, user baru dapat mendaftar dengan mudah di situs web tanpa harus menulis kode dari awal. 
+Django UserCreationForm adalah impor *form* bawaan dari Django yang memudahkan pembuatan *form* pendaftaran *user* dalam aplikasi *web*. UserCreationForm memiliki tiga *fields* yaitu `username`, `password`, `confirmation password`. Dengan *form* ini, *user* baru dapat mendaftar dengan mudah di situs *web* tanpa harus menulis kode dari awal. 
 
 - **Kelebihan**
 
     1. *Built-In Authentication*
-        Karena merupakan bagian dari *framework* Django, UserCreationForm mudah diimplementasikan dan memiliki fungsionalitas yang tinggi di mana developer tidak perlu membuat *code* dari *strach*
+
+        Karena merupakan bagian dari *framework* Django, UserCreationForm mudah diimplementasikan dan memiliki fungsionalitas yang tinggi di mana developer tidak perlu membuat *code* dari *strach*. Bahkan, *form* yang disediakan juga sudah terdapat validasi otomatisnya.
+
     2. *Security*
-        Form telah meng-*handle* masalah kemanan seperti validasi kata sandi dan *password hashing* di mana melindungi data *user*
+
+        *Form* telah meng-*handle* masalah kemanan seperti validasi kata sandi dan *password hashing* di mana melindungi data *user*.
+
     3. *Customization*
-        Kita dapat dengan mudah mengkustomisasi form tersebut, contohnya menambahkan fields tambahan sebagai syarat registrasi
+
+        Kita dapat dengan mudah mengkustomisasi *form* tersebut, contohnya menambahkan *fields* tambahan sebagai syarat registrasi.
+
     4. *Compatibility*
-        Karena merupakan bagian dari *framework* Django, form ini akan selalu *update* dengan Django sehingga bersifat *well-maintained* dan memastikan *security & compability updates* yang dilakukan oleh Django itu sendiri.
+
+        Karena merupakan bagian dari *framework* Django, *form* ini akan selalu *update* mengikuti *update* dari Django sehingga bersifat *well-maintained* dan memastikan *security & compability* yang ada sudah *up-to-date*.
 
 - **Kekurangan**
     1. *Basic Features*
+
         UserCreationForm menyediakan fungsi pendaftaran yang sangat *basic* sehingga jika kita memerlukan fitur-fitur tambahan ataupun menyesuaikan dengan desain aplikasi kita, diperlukan kustomisasi kembali di mana dapat menjadi kompleks dan memakan waktu.
+
     2. *Internationalization* (i18n)
+
         Perlu dipastikan kembali apakah label-label form dan pesan yang ditampilkan sesuai dengan bahasa yang diinginkan.
+
     3. *Dependency on Django*
+
         UserCreationForm merupakan *framework* bawaan dari Django sehingga jika suatu saat aplikasi/web beralih ke sistem otentikasi atau kerangka kerja yang berbeda, perlu disesuaikan kembali fungsionalitas form pendaftaran user.
 
 ### 2. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
 | Autentikasi  | Otorisasi |
 | ------------- | ------------- |
-| Identitas pengguna diperiksa untuk memberikan akses ke sistem | Otoritas pengguna diperiksa untuk mengakses resources pada sistem |
-| Pengguna diverifikasi melalui nama pengguna, password, face recognition, retina scan, fingerprint, dll. | Pengguna divalidasi berdasarkan hak ases terhadap resources dengan menggunakan role yang telah ditentukan sebelumnya |
-| Memerlukan detail login pengguna | Memerlukan user's privilege atau security levels |
+| Identitas pengguna diperiksa untuk memberikan akses ke sistem | Otoritas pengguna diperiksa untuk mengakses *resources* pada sistem |
+| Pengguna diverifikasi melalui nama pengguna, *password*, *face recognition*, *retina scan*, *fingerprint*, dll. | Pengguna divalidasi berdasarkan hak ases terhadap *resources* dengan menggunakan *role* yang telah ditentukan sebelumnya |
+| Memerlukan detail login pengguna | Memerlukan *user's privilege* atau *security levels* |
 | Menentukan apakah orang tersebut adalah pengguna atau bukan | Menentukan apakah izin yang dimiliki pengguna tersebut |
-| Terlihat pada end user | Tidak terlihat oleh end user |
+| Terlihat pada *end user* | Tidak terlihat oleh *end user* |
 
-Contoh dari perbedaan keduanya adalah, saat mahasiswa melakukan login pada SCELE. Mahasiswa diharuskan login terlebih dahulu sebagai bentuk autentikasi untuk menenetukan apakah terdaftar sebagai mahasiswa UI atau bukan sebelum mengakses laman SCELE. Setelah mahasiswa berhasil melakukan autentikasi, sistem menentukan informasi apa yang boleh diakses oleh mahasiswa tersebut berdasarkan role yang telah ditentukan dalam sistem.
+Contoh dari perbedaan keduanya adalah, saat mahasiswa melakukan login pada SCELE. Mahasiswa diharuskan login terlebih dahulu sebagai bentuk autentikasi untuk menenetukan apakah terdaftar sebagai mahasiswa UI atau bukan sebelum mengakses laman SCELE. Setelah mahasiswa berhasil melakukan autentikasi, sistem menentukan informasi apa yang boleh diakses oleh mahasiswa tersebut berdasarkan *role* yang telah ditentukan dalam sistem.
 
 Autentikasi dan otorisasi sangat penting untuk menjaga keamanan, privasi data, dan integritas sistem komputer dan aplikasi. Keduanya bekerja sama untuk memastikan bahwa hanya pengguna yang berwenang yang dapat mengakses data dan sumber daya yang sesuai, serta melindungi informasi pengguna dari akses yang tidak sah.
 
@@ -404,10 +416,15 @@ Ketika seorang pengguna pertama kali mengakses situs web Django, cookie session 
 
 ### 4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
 Penggunaan cookies dalam pengembangan web relatif aman. Namun, jika data cookie jatuh ke tangan yang salah maka dapat disalahgunakan untuk mengakses sesi penelusuran, mencuri informasi pribadi, dsb. Beberapa serangan yang bisa terjadi berkaitan dengan cookies ini adalah:
+
 a. *Cross-Site Scripting* (XSS)
-    Eksploitasi keamanan di mana penyerang menempatkan malicious client-end code ke laman web dengan tujuan untuk mengambil data penting, mengambil cookie dari user atau mengirimkan suatu program yang dapat merusak user namun membuatnya terlihat disebabkan oleh web itu sendiri. Untuk mencegahnya, gunakan metode keamanan seperti HTTP Only untuk melindungi cookies dari serangan ini.
+
+Eksploitasi keamanan di mana penyerang menempatkan malicious client-end code ke laman web dengan tujuan untuk mengambil data penting, mengambil cookie dari user atau mengirimkan suatu program yang dapat merusak user namun membuatnya terlihat disebabkan oleh web itu sendiri. Untuk mencegahnya, gunakan metode keamanan seperti HTTP Only untuk melindungi cookies dari serangan ini.
+
 b. *Cross-Site Request Forgery* (CSRF)
-    Serangan CSRF dapat memanipulasi cookies untuk melakukan tindakan tidak diinginkan pada nama pengguna yang terotentikasi. Token CSRF dapat diimplementasikan untuk mencegah serangan ini.
+
+Serangan CSRF dapat memanipulasi cookies untuk melakukan tindakan tidak diinginkan pada nama pengguna yang terotentikasi. Token CSRF dapat diimplementasikan untuk mencegah serangan ini.
+
 Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan langkah-langkah pencegahan untuk menghindari hal-hal yang tidak diinginkan, seperti mematuhi praktik keamanan yang baik, mengenkripsi data sensitif yang disimpan dalam cookies, dan melakukan validasi data yang masuk ke dalam cookies.
 
 ### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
@@ -422,8 +439,8 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
         from django.contrib import messages  
         ```
         Notes:
-        - UserCreationForm --> import form bawaan Django yang memudahkan pembuatan form pendaftaran user dalam aplikasi web tanpa harus menulis kode dari awal.
-    - Untuk menghasilkan form registrasi secara otomatis dan membuat akun user ketika data form di-submit, buat fungsi `register` dengan parameter `request` dan isi dengan kode berikut:
+        - UserCreationForm --> impor form bawaan Django yang memudahkan pembuatan form pendaftaran user dalam aplikasi web tanpa harus menulis kode dari awal.
+    - Untuk menghasilkan form registrasi secara otomatis dan membuat akun user ketika data dari form di-submit, buat fungsi `register` dengan parameter `request` dan isi dengan kode berikut:
         ```
         def register(request):
             form = UserCreationForm()
@@ -440,7 +457,7 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
             return render(request, 'register.html', context)
         ```
         Notes:
-        - `form = UserCreationForm(request.POST)` --> membuat `UserCreationForm` baru dari yang telah di-import sebelumnya dengan memasukkan QueryDict berdasarkan input dari user pada `request.POST`.
+        - `form = UserCreationForm(request.POST)` --> membuat `UserCreationForm` baru dari yang telah diimpor sebelumnya dengan memasukkan QueryDict berdasarkan input dari user pada `request.POST`.
         - `form.is_valid` --> memvalidasi data dari form tersebut.
         - `form.save` --> membuat dan menyimpan data dari form tersebut.
         - `messages.success(request, 'Your account has been successfully created!')` --> menampilkan pesan kepada pengguna setelah berhasil membuat akun.
@@ -487,7 +504,7 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
 2. Login
 
     a. Pada `main/views.py`:
-    - Tambahkan import berikut:
+    - Tambahkan impor berikut:
 
         ```
         from django.contrib.auth import authenticate, login
@@ -567,7 +584,7 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
 3. Logout
 
     a. Pada `main/views.py`:
-    - Tambahkan import berikut::
+    - Tambahkan impor berikut::
         ```
         from django.contrib.auth import logout
         ```
@@ -582,7 +599,7 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
         - `return redirect('main:login')` --> mengarahkan pengguna ke halaman login dalam aplikasi Django.
 
     b. Pada `main/templates/main.html`:
-    Setelah *hyperlink tag* untuk `Add New Product`, tambahkan kode berikut:
+    Setelah *hyperlink tag* untuk `Add New Item`, tambahkan kode berikut:
     ```
     ...
     <a href="{% url 'main:logout' %}">
@@ -596,9 +613,12 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
     ```
     from main.views import register, login_user, logout_user
     ...
-    path('register/', register, name='register'), 
-    path('login/', login_user, name='login'),
-    path('logout/', logout_user, name='logout'),
+    urlpatterns = [
+        ...
+        path('register/', register, name='register'), 
+        path('login/', login_user, name='login'),
+        path('logout/', logout_user, name='logout'),
+    ]
     ```
 - Untuk memastikan hanya user yang memiliki akun pada aplikasi yang dapat mengakses halaman main, lakukan hal berikut:
 
@@ -632,7 +652,7 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
 
 a. Pada `main/models.py`
 
-- Tambahkan import:
+- Tambahkan impor:
     ```
     from django.contrib.auth.models import User
     ```
