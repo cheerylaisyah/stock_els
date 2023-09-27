@@ -619,7 +619,14 @@ Oleh karena itu, walaupun penggunaan cookies aman, namun kita perlu melakukan la
     ...
     ```
 - [x] **Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.**
+- Flow pembuatan akun dan menambahkan tiga dummy data:
+    <img width="1887" alt="Flow Add Item" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/a20bf1a7-7c82-41ea-86b0-5d692c7324ad">
 
+- Akun Pertama
+    <img width="960" alt="Akun 1" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/cec0f584-de61-42a2-875a-9df897136754">
+
+- Akun Kedua
+    <img width="960" alt="Akun 2" src="https://github.com/cheerylaisyah/stock_els/assets/113777425/3f1a2768-9452-43a4-94b6-8dd61239a368">
 
 - [x] **Menghubungkan model Item dengan User.**
 
