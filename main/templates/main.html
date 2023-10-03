@@ -1,76 +1,141 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 style="text-align: center; color:rgb(117, 31, 31); background-color: beige"><strong><i>STOCK ELS</i></strong></h1>
-    <h2 style="color: palevioletred;">Inventory Page</h2>
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(29, 28, 28)">
+    <a class="navbar-brand" href="{% url 'main:show_main'%}"><h1>Stock El's</h1></a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" style="color: white" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" style="color: white" aria-current="page" href="{% url 'main:show_main'%}">Inventory</a>
+        </li>
+        </ul>
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user icon"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userProfileDropdown">
+            <li><a class="dropdown-item" aria-readonly="true" style="font-weight: bolder;">Hello, {{ user.username }}!</a></li>
+            <li><a class="dropdown-item" aria-readonly="true">Last login: {{ last_login }}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'main:logout' %}" style="font-weight: bold; color: #b80000; text-align: center;">Logout</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
 
-    <h4 style="font-family: Georgia;">Name: {{ my_name }} </h4>
-    <h4 style="font-family: Georgia">Class: {{ my_class }} </h4>
+<div class="card">
+    <div class="card-body">
+        <h2>Inventory Page</h2>
+        <h3 class="text-center bg-light p-3">You have {{ total_items }} total items saved!</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Size</th>
+                    <th style="text-align: center;">Amount</th>
+                    <th>Description</th>
+                    <th>Date Added</th>
+                    <th style="text-align: center;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>Rp{{ item.price }}</td>
+                    <td class="text-center">{{ item.size }}</td>
+                    <td class="text-center">
+                        <form action="{% url 'main:decrement_item' item.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="decrement" class="btn btn-danger btn-circle">-</button>
+                        </form>
+                        {{ item.amount }}
+                        <form action="{% url 'main:increment_item' item.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="increment" class="btn btn-success btn-circle">+</button>
+                        </form>
+                    </td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.date_added }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'main:edit_item' item.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" name="edit" class="btn btn-warning">Edit</button>
+                        </a>
+                        <form action="{% url 'main:remove_item' item.pk %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="remove" class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            <a href="{% url 'main:create_item' %}" class="btn btn-primary">Add New Item</a>
+        </div>
+    </div>
+</div>
 
-    <!-- menambahkan pesan untuk bonus -->
-<h2 style="text-align: center; background-color: rgb(237, 237, 237)">Kamu memiliki {{ total_items }} item yang tersimpan pada aplikasi ini!</h2>
-    <!---->
-<table style="width: 100%" cellspacing="5" border="1">
-    <tr bgcolor="#e66457">
-        <th>Name</th>
-        <th>Price</th>
-        <th>Size</th>
-        <th>Amount</th>
-        <th>Change Item Amount</th>
-        <th>Description</th>
-        <th>Date Added</th>
-       
-    </tr>
+<style>
+    h1{
+        color: white;
+        padding-left: 15px;
+        padding-right: 10px;
+    }
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    h5{
+        text-align: center;
+        font-size: 16px;
+        margin-top: 25px;
+    }
 
-    {% for item in items %}
-        <tr>
-            <td>{{item.name}}</td>
-            <td>Rp{{item.price}}</td>
-            <td style="text-align: center;">{{item.size}}</td>
-            <td style="text-align: center;">{{item.amount}}</td>
-            <!-- menambahkan button tentang amount item sebagai bonus -->
-            <td style="text-align: center;">
-                <form action="{% url 'main:increment_item' item.id %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" name="increment">
-                        +
-                    </button>
-                </form>
-                <form action="{% url 'main:decrement_item' item.id %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" name="decrement">
-                        -
-                    </button>
-                </form>
-                <form action="{% url 'main:remove_item' item.id %}" method="post" style="display: inline;">
-                    {% csrf_token %}
-                    <button type="submit" name="remove">
-                        Remove
-                    </button>
-                </form>
-            </td>
-            <td>{{item.description}}</td>
-            <td>{{item.date_added}}</td>
-            
-        </tr>
-    {% endfor %}
-</table>
+    .nav-item{
+        color: white;
+        padding-right: 15px;
+    }
 
-<br />
+    .icon {
+        font-size: 25px;
+    }
 
-<a href="{% url 'main:create_item' %}">
-    <button>
-        Add New Item
-    </button>
-</a>
+    ::placeholder {
+        color: rgb(16, 16, 16);
+    }
 
-<!--Tugas 4-->
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+    .card{
+        margin-top: 60px;
+    }
+    
+    .btn-circle {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        font-size: 13px;
+    }
+
+    .btn-primary {
+        background-color: rgb(40, 39, 39); 
+        color: white; 
+        width: 200px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: none; 
+        border-radius: 20px;
+        cursor: pointer; 
+    }
+    
+    
+
+    table tr:last-child td {
+        background-color: #daf8ff; 
+        color: #160323; 
+    }
+</style>
+
 {% endblock content %}

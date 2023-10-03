@@ -5,43 +5,104 @@
 {% endblock meta %}
 
 {% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url(https://images7.alphacoders.com/115/1153599.jpg); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+    <div class="login-container"> 
+        <div class="login">
 
-<div style="display: flex; justify-content: center; align-items: center; min-height: 90vh;">
-    <div class="login">
+            <h2 align="center" style="margin-bottom: 30px; margin-top: 15px;">Login</h2>
 
-        <h1>Login</h1>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td class="input-icons">
+                            <i class="fa fa-user icon"></i>
+                            <input type="text" name="username" placeholder="Username" class="form-control" autocomplete="off">
+                        </td>
+                    </tr>
 
-        <form method="POST" action="">
-            {% csrf_token %}
-            <table>
-                <tr>
-                    <td>Username: </td>
-                    <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-                </tr>
+                    <tr>
+                        <td class="input-icons">
+                            <i class="fa fa-lock icon"></i>
+                            <input type="password" name="password" placeholder="Password" class="form-control">
+                        </td>
+                    </tr>
 
-                <tr>
-                    <td>Password: </td>
-                    <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-                </tr>
+                    <tr>
+                        <td colspan="2" align="center"><input class="btn login_btn" type="submit" value="Login" ></td>
+                    </tr>
+                </table>
+            </form>
 
-                <tr>
-                    <td></td>
-                    <td><input class="btn login_btn" type="submit" value="Login"></td>
-                </tr>
-            </table>
-        </form>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li class="error-message">{{ message | linebreaksbr }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-
-        Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
-        
+            <p style="margin-bottom: 20px; font-size: 14px;">Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a></p>
+        </div>
     </div>
 </div>
 
+<style>
+    .login-container {
+        background-color: rgba(255, 255, 255, 0.8); 
+        border-radius: 10px; 
+        padding: 20px; 
+        border: 2px solid white;
+        backdrop-filter: blur(5px);
+    }
+
+    .form-control {
+        align-items: center;
+        width: 100%;
+        margin-bottom: 15px; 
+        border-radius: 200px;
+        border: 2px solid white;
+    }
+
+    .login-container .login {
+        text-align: center; 
+    }
+
+    .btn.login_btn {
+        background-color: rgb(40, 39, 39); 
+        color: white; 
+        width: 300px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        border: none; 
+        border-radius: 20px;
+        cursor: pointer; 
+    }
+
+    .input-icons i {
+        position: absolute;
+    } 
+         
+    .input-icons {
+        width: 100%;
+    }
+
+    .icon {
+        padding: 10px;
+        color: #b80000;
+        margin-left: 110px;
+        font-size: 20px;
+    }
+
+    .error-message {
+        font-size: 14px;
+        color: #b80000; 
+        list-style: none; 
+        margin-bottom: 10px; 
+        margin-left: -35px; 
+        text-align: center;
+        padding: 5px; 
+    }
+
+</style>
 {% endblock content %}

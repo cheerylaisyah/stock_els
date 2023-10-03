@@ -1,19 +1,89 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>Add New Item</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Add Item"/>
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="card-title">Add New Item</h1>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card-input">
+                        <p>
+                            <input type="text" name="name" placeholder="Item Name" maxlength="255" required="" id="id_name" autocomplete="off" style="font-weight: bold; color: black; font-size: x-large;" >
+                        </p>
+                        
+                        <p>
+                            <input type="text" name="description" placeholder="Add a Short Description" maxlength="255" required="" id="id_description" autocomplete="off" style="width: 100%;">
+                        </p>
+                        <p>
+                            <label for="id_price">Price:</label>
+                            <input type="number" name="price" required="" id="id_price">
+                        </p>
+                        <p>
+                            <label for="id_size">Size:</label>
+                            <input type="number" name="size" step="any" required="" id="id_size">
+                        </p>
+                        <p>
+                            <label for="id_amount">Amount:</label>
+                            <input type="number" name="amount" required="" id="id_amount">
+                        </p>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">Add Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    ::placeholder{
+        color: rgb(16, 16, 16);
+    }
+
+    input[type="text"]{
+        border: none;
+        outline: none;
+    }
+
+    .card-title{
+        font-size: 30px;
+        text-align: center;
+        color: white;
+    }
+
+    .card-header {
+        background-color: #b80000;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .card-title {
+        margin-bottom: 0;
+    }
+
+    .card-input{
+        outline: none;
+    }
+
+    .btn.btn-primary{
+        background-color: rgb(40, 39, 39); 
+        color: white; 
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 200px;
+        border: none; 
+        border-radius: 20px;
+    }
+
+    label {
+        display: inline-block;
+        width: 100px;
+    }
+</style>
 
 {% endblock %}
