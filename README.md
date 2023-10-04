@@ -1130,8 +1130,6 @@ Notes: Menggunakan inline dan internal CSS.
     </style>
 
     ```
-</details>
-
 
 3. Tambah Inventori
     ```
@@ -1379,6 +1377,3 @@ table tr:last-child td {
 - Notes: `table tr:last-child td` adalah selector CSS yang digunakan untuk menargetkan elemen-elemen <td> (sel) dalam baris terakhir (<tr>) dari sebuah tabel (<table>). Sehingga, code tersebut akan mengubah warna background dari baris terakhir tabel (dalam hal ini berisi daftar inventori).
 
 </detail>
-
-
-Tag	Description
