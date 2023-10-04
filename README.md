@@ -4,12 +4,12 @@
 
 **Kelas   : PBP C**
 
-# [*Stock Els*](https://stock-els.adaptable.app/main)
+# 💫👟[*Stock Els*](https://stock-els.adaptable.app/main)
 
-## Link Adaptable: https://stock-els.adaptable.app
+## 💻Link Adaptable: https://stock-els.adaptable.app
 
 <details>
-<summary><b>Tugas 2</b></summary>
+<summary><b>📝Tugas 2</b></summary>
 
 ### 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 - [x] **Membuat sebuah proyek Django baru.**
@@ -120,7 +120,7 @@ Ketiga pola arsitektur di atas memiliki komponen *Model* dan *View*, namun ketig
 </details>
 
 <details>
-<summary><b>Tugas 3</h1></b></summary>
+<summary><b>📝Tugas 3</h1></b></summary>
 
 ### 1. Apa perbedaan antara form POST dan form GET dalam Django?
 | POST  | GET |
@@ -360,7 +360,7 @@ Unlocking the Power of JSON Data Type in Web Development. (2023, April 22). Link
 </details>
 
 <details>
-<summary><b>Tugas 4</h1></b></summary>
+<summary><b>📝Tugas 4</h1></b></summary>
 
 ### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
 Django UserCreationForm adalah impor *form* bawaan dari Django yang memudahkan pembuatan *form* pendaftaran *user* dalam aplikasi *web*. UserCreationForm memiliki tiga *fields* yaitu `username`, `password`, `confirmation password`. Dengan *form* ini, *user* baru dapat mendaftar dengan mudah di situs *web* tanpa harus menulis kode dari awal. 
@@ -818,3 +818,567 @@ Pada `main/templates/main.html`:
 ### 7. Melakukan add-commit-push ke GitHub.
 Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
 </details>
+
+<details>
+<summary><b>📝Tugas 5</b></summary>
+
+### 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+| Nama Selektor | Manfaat | Waktu Penggunaan | Contoh Penggunaan |
+|-|-|-|-|
+| Selektor Elemen (Tag) | Memilih semua elemen HTML dengan jenis tag tertentu. | Cocok digunakan ketika ingin menerapkan gaya yang sama pada semua elemen dengan jenis tag yang sama. Misalnya, untuk mengatur gaya default untuk semua paragraf (<p>) di halaman web. | `p`|
+| Selektor Universal (*) | Memilih semua elemen dalam dokumen HTML. | Harus digunakan dengan hati-hati karena dapat memengaruhi semua elemen dalam halaman. Sebaiknya digunakan untuk mengatur reset CSS atau gaya default di tingkat tinggi. | `*` |
+| Selektor ID (#id) | Memilih elemen berdasarkan atribut id yang unik. | Digunakan ketika ingin mengatur gaya untuk elemen tunggal yang memiliki atribut id unik. Juga berguna dalam konteks JavaScript ketika perlu merujuk ke elemen tertentu. | `#header` |
+| Selektor Kelas (.class) | Memilih elemen berdasarkan atribut class. | Ketika ingin menerapkan gaya yang sama pada beberapa elemen dengan atribut class yang sama atau ketika ingin menambahkan perilaku JavaScript ke elemen-elemen serupa. | `.btn-primary` |
+| Selektor Atribut ([attribute]) | Memilih elemen berdasarkan atribut HTML mereka. | Saat ingin memilih elemen berdasarkan atribut tertentu, misalnya, ketika ingin mengatur gaya untuk semua tautan eksternal (<a>) dengan href eksternal. | `[href]` |
+| Selektor Pseudo-class (:pseudo-class) | Memilih elemen dalam keadaan tertentu atau berdasarkan interaksi pengguna. | Saat ingin mengubah gaya elemen saat interaksi pengguna, seperti mengubah warna tautan saat diklik (:hover) atau mengatur ulang inputan saat difokuskan (:focus). | `a:hover` |
+| Selektor Pseudo-element (::pseudo-element) | Memilih bagian dari elemen yang mungkin tidak ada dalam markup HTML. | Digunakan saat ingin mengatur gaya bagian-bagian tertentu dari elemen, seperti menambahkan konten sebelum atau sesudah elemen (::before dan ::after) atau memformat teks yang dipilih (::selection). | `::before` |
+
+### 2. Jelaskan HTML5 Tag yang kamu ketahui.
+| Tag HTML   | Penjelasan                                               |
+|------------|---------------------------------------------------------|
+| `<a>`      | Menentukan tautan atau hyperlink ke halaman web atau berkas lain. |
+| `<b>`      | Menampilkan teks dalam gaya tebal (bold).                   |
+| `<body>`   | Menentukan badan atau konten utama dokumen HTML.           |
+| `<br>`     | Menghasilkan satu baris pemisah.                           |
+| `<button>` | Membuat tombol yang dapat diklik.                          |
+| `<col>`    | Menentukan nilai atribut untuk satu atau lebih kolom dalam tabel. |
+| `<div>`    | Mengelompokkan dan mengatur konten dalam blok yang dapat diubah tampilannya menggunakan CSS. |
+| `<form>`   | Menentukan formulir HTML untuk input pengguna.               |
+| `<head>`   | Menentukan bagian kepala dokumen yang berisi informasi tentang dokumen, seperti judul. |
+| `<h1>` - `<h6>` | Menentukan tingkat kepentingan berbagai judul atau heading dalam halaman web. |
+| `<html>`   | Menentukan elemen root dari dokumen HTML.                    |
+| `<i>`      | Menampilkan teks dalam gaya miring (italic).                 |
+| `<img>`    | Menampilkan gambar di halaman web.                           |
+| `<input>`  | Menentukan kontrol input, seperti kotak input teks.          |
+| `<label>`  | Menentukan label untuk kontrol input seperti `<input>`.     |
+| `<li>`     | Menentukan item dalam daftar, seperti daftar tak terurut (unordered list). |
+| `<meta>`   | Menyediakan informasi meta tentang dokumen, seperti karakter encoding dan deskripsi halaman. |
+| `<nav>`    | Menentukan bagian dari navigasi atau tautan-tautan menu dalam halaman web. |
+| `<p>`      | Menampilkan paragraf teks.                                   |
+| `<small>`  | Menampilkan teks dalam ukuran kecil.                        |
+| `<style>`  | Menyisipkan informasi gaya, seperti CSS, ke dalam dokumen.     |
+| `<table>`  | Menentukan tabel untuk menampilkan data tabular.            |
+| `<tbody>`  | Mengelompokkan baris-baris yang mendefinisikan isi utama dari tabel. |
+| `<td>`     | Menentukan sel dalam tabel.                                  |
+| `<textarea>` | Menentukan kontrol input teks multi-baris (text area).     |
+| `<th>`     | Menentukan sel header dalam tabel.                           |
+| `<thead>`  | Mengelompokkan baris-baris yang mendefinisikan label kolom dalam tabel. |
+| `<tr>`     | Menentukan baris dalam tabel.                               |
+| `<ul>`     | Menentukan daftar tak terurut (unordered list).              |
+
+### 3. Jelaskan perbedaan antara margin dan padding.
+<img width=400px alt="Margin vs Padding" src="https://images.ctfassets.net/pdf29us7flmy/6FMwLUnze6f6SQjjxpB5lq/4da8905078cce5668a00b488f913340d/-IND-004-082-_When_and_How_To_Use_Margin_vs._Padding_in_CSS_-_Final.png">
+
+| Fitur | Margin | Padding |
+| - | - | - |
+| Definisi | Jarak di luar batas elemen. | Jarak di dalam batas elemen.|
+| Penggunaan| Mengatur jarak antara elemen dan elemen-elemen lain. | Mengatur jarak antara konten elemen dan batas elemen itu sendiri. |
+| Latar Belakang | Tidak memiliki latar belakang atau warna sendiri. | Memiliki latar belakang atau warna yang sama dengan elemen tersebut. |
+| Mempengaruhi  | Mempengaruhi tata letak elemen itu sendiri dan elemen-elemen lain di sekitarnya. | Mempengaruhi tampilan elemen itu sendiri dan jarak antara konten dan batasnya. |
+| Penyajian Visual | Menciptakan ruang di sekitar elemen. | Menciptakan ruang di dalam elemen sekitar kontennya. |
+| Penggunaan Umum | Mengatur jarak antara elemen-elemen yang berdekatan atau elemen dengan elemen tetangganya. | Mengatur jarak antara konten elemen dan elemen itu sendiri. |
+| Nilai Numerik  | Bilangan bulat. | Bilangan real positif. |
+
+### 4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+| Tailwind CSS | Bootstrap |
+|-|-|
+| Framework CSS berbasis utilitas (utility-first). Membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya. | Framework berbasis komponen dengan class utilitas. Menggunakan gaya dan komponen yang telah didefinisikan, yang memiliki tampilan yang sudah jadi dan dapat digunakan secara langsung. |
+| Memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek. | Sering kali menghasilkan tampilan yang lebih konsisten di seluruh proyek karena menggunakan komponen yang telah didefinisikan. |
+| Tema yang dapat disesuaikan menggunakan berkas konfigurasi. | Menawarkan tema dan template yang telah didesain sebelumnya. |
+| Tersedia perpustakaan komponen berpendapat, seperti Tailwind UI (produk komersial). | Dilengkapi dengan perpustakaan komponen yang luas. |
+| Kurva belajar yang lebih curam karena karena perlu memahami kelas-kelas utilitas. | Lebih mudah bagi pemula yang sudah akrab dengan CSS. |
+| Komunitas yang lebih kecil namun sumber daya yang sangat membantu karena popularitas yang meningkat. | Komunitas besar dengan sumber daya yang sangat banyak. |
+
+Maka, untuk memilih di antara kedua framework ini, bergantung kepada kebutuhan dan kemampuan kita. Jika kita ingin tingkat kontrol yang tinggi atau kemampuan CSS yang tinggi maka gunakan Tailwind, namun jika kita ingin membuat website dengan cepat menggunakan komponen yang sudah ada atau kemampuan CSS yang masih pemula maka gunakan Bootstrap.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut
+- [x] **Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.**
+Semua menggunakan `base.html` sebagai template sehingga untuk mempermudah proses kustomisasi, saya melakukan hal-hal berikut pada `base.html`: 
+1. Menambahkan tag `<meta name="viewport">` agar halaman web dapat menyesuaikan ukuran dan perilaku perangkat mobile atau responsive.
+    ```
+    {% block meta %}
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+    {% endblock meta %}
+    ```
+2. Menambahkan framework Bootstrap CSS dan JS untuk mempermudah dalam kustomisasi halaman:
+    ```
+    <head>
+        {% block meta %}
+            ...
+        {% endblock meta %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    ```
+3. Untuk menggunakan font dan icon dari luar, saya menambahkan code berikut:
+    ```
+    <head>
+        ...
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    ```
+4. Untuk mengganti background dan font pada semua halaman, saya menambahkan code berikut:
+    ```
+    <style>
+        body{
+        background-image: url('https://media4.giphy.com/media/J3BlD4W2r1mcK1vMWW/giphy.webp'); 
+        font-family: 'Poppins', sans-serif;
+        }
+    </style>
+    ```
+Notes: Menggunakan inline dan internal CSS.
+
+1. 👤Login
+    ```
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url(https://images7.alphacoders.com/115/1153599.jpg); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+        <div class="login-container"> 
+            <div class="login">
+
+                <h2 align="center" style="margin-bottom: 30px; margin-top: 15px;">Login</h2>
+
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td class="input-icons">
+                                <i class="fa fa-user icon"></i>
+                                <input type="text" name="username" placeholder="Username" class="form-control" autocomplete="off">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="input-icons">
+                                <i class="fa fa-lock icon"></i>
+                                <input type="password" name="password" placeholder="Password" class="form-control">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" align="center"><input class="btn login_btn" type="submit" value="Login" ></td>
+                        </tr>
+                    </table>
+                </form>
+
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li class="error-message">{{ message | linebreaksbr }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <p style="margin-bottom: 20px; font-size: 14px;">Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 10px; 
+            padding: 20px; 
+            border: 2px solid white;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-control {
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px; 
+            border-radius: 200px;
+            border: 2px solid white;
+        }
+
+        .login-container .login {
+            text-align: center; 
+        }
+
+        .btn.login_btn {
+            background-color: rgb(40, 39, 39); 
+            color: white; 
+            width: 300px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: none; 
+            border-radius: 20px;
+            cursor: pointer; 
+        }
+
+        .input-icons i {
+            position: absolute;
+        } 
+            
+        .input-icons {
+            width: 100%;
+        }
+
+        .icon {
+            padding: 10px;
+            color: #b80000;
+            margin-left: 110px;
+            font-size: 20px;
+        }
+
+        .error-message {
+            font-size: 14px;
+            color: #b80000; 
+            list-style: none; 
+            margin-bottom: 10px; 
+            margin-left: -35px; 
+            text-align: center;
+            padding: 5px; 
+        }
+
+    </style>
+    ```
+
+
+2. 👤Register
+    ```
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url(https://images7.alphacoders.com/115/1153599.jpg); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+        <div class="login-container">
+            <div class="login">
+                <h1>Register</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {% for field in form %}
+                        <p>
+                            <input class="input-cointaner" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" placeholder="{{ field.label }}" id="{{ field.auto_id }}" autocomplete="off">
+                            {% if field.help_text %}
+                            <div class="help-text">{{ field.help_text }}</div>
+                            {% endif %}
+                            {% for error in field.errors %}
+                            <p class="error-message">{{ error }}</p>
+                            {% endfor %}
+                        </p>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td><input class="btn register_btn" type="submit" name="submit" value="Register"></td>
+                        </tr>
+                    </table>
+                </form>
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <style>
+        h1{
+            text-align: center;
+            margin-bottom: 30px; 
+            margin-top: 15px;
+        }
+
+        .login-container {
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 10px; 
+            padding: 20px; 
+            border: 2px solid white;
+            backdrop-filter: blur(5px);
+        }
+
+        .input-cointaner {
+            align-items: center;
+            width: 100%;
+            padding-left: 10px; 
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 20px;
+            border: 2px solid white;
+        }
+
+        .error-message {
+            margin-top: 15px;
+            color: #b80000;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .help-text{
+        font-size: 12px; 
+        margin-left: 5px;
+        color: #3b3737
+        }
+
+        .btn.register_btn {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(40, 39, 39); 
+            color: white; 
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 350px;
+            border: none; 
+            border-radius: 20px;
+        }
+    </style>
+
+    ```
+</details>
+
+
+3. Tambah Inventori
+    ```
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">Add New Item</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="card-input">
+                            <p>
+                                <input type="text" name="name" placeholder="Item Name" maxlength="255" required="" id="id_name" autocomplete="off" style="font-weight: bold; color: black; font-size: x-large;" >
+                            </p>
+                            
+                            <p>
+                                <input type="text" name="description" placeholder="Add a Short Description" maxlength="255" required="" id="id_description" autocomplete="off" style="width: 100%;">
+                            </p>
+                            <p>
+                                <label for="id_price">Price:</label>
+                                <input type="number" name="price" required="" id="id_price">
+                            </p>
+                            <p>
+                                <label for="id_size">Size:</label>
+                                <input type="number" name="size" step="any" required="" id="id_size">
+                            </p>
+                            <p>
+                                <label for="id_amount">Amount:</label>
+                                <input type="number" name="amount" required="" id="id_amount">
+                            </p>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary">Add Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        ::placeholder{
+            color: rgb(16, 16, 16);
+        }
+
+        input[type="text"]{
+            border: none;
+            outline: none;
+        }
+
+        .card-title{
+            font-size: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .card-header {
+            background-color: #b80000;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .card-title {
+            margin-bottom: 0;
+        }
+
+        .card-input{
+            outline: none;
+        }
+
+        .btn.btn-primary{
+            background-color: rgb(40, 39, 39); 
+            color: white; 
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            border: none; 
+            border-radius: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+    ```
+
+- [x] **Kustomisasi halaman daftar inventori menjadi lebih berwarna maupun menggunakan apporach lain seperti menggunakan Card.**
+
+    Daftar inventori ditampilkan pada `main.html`, sehingga saya menambahkan styling CSS pada file tersebut. Selain mengubah tata letak tabel, saya juga menambahkan navbar yang dapat dilihat pada `<nav>`.
+    ```
+    <nav class="navbar navbar-expand-lg" style="background-color: rgb(29, 28, 28)">
+        <a class="navbar-brand" href="{% url 'main:show_main'%}"><h1>Stock El's</h1></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" style="color: white" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" style="color: white" aria-current="page" href="{% url 'main:show_main'%}">Inventory</a>
+            </li>
+            </ul>
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight:500">
+                Hello, {{ user.username }}!
+                <i class="fa fa-user icon"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userProfileDropdown">
+                <li><a class="dropdown-item" aria-readonly="true" style="font-weight: bolder;">{{ user.username }}</a></li>
+                <li><a class="dropdown-item" aria-readonly="true" style="font-weight: bolder;">PBP C</a></li>
+                <li><a class="dropdown-item" aria-readonly="true">Last login: {{ last_login }}</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'main:logout' %}" style="font-weight: bold; color: #b80000; text-align: center;">Logout</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <div class="card">
+        <div class="card-body">
+            <h2>Inventory Page</h2>
+            <h3 class="text-center bg-light p-3">You have {{ total_items }} total items saved!</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Size</th>
+                        <th style="text-align: center;">Amount</th>
+                        <th>Description</th>
+                        <th>Date Added</th>
+                        <th style="text-align: center;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>Rp{{ item.price }}</td>
+                        <td class="text-center">{{ item.size }}</td>
+                        <td class="text-center">
+                            <form action="{% url 'main:decrement_item' item.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" name="decrement" class="btn btn-danger btn-circle">-</button>
+                            </form>
+                            {{ item.amount }}
+                            <form action="{% url 'main:increment_item' item.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" name="increment" class="btn btn-success btn-circle">+</button>
+                            </form>
+                        </td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.date_added }}</td>
+                        <td class="text-center">
+                            <a href="{% url 'main:edit_item' item.pk %}">
+                                {% csrf_token %}
+                                <button type="submit" name="edit" class="btn btn-warning">Edit</button>
+                            </a>
+                            <form action="{% url 'main:remove_item' item.pk %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" name="remove" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a href="{% url 'main:create_item' %}" class="btn btn-primary">Add New Item</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        h1{
+            color: white;
+            padding-left: 15px;
+            padding-right: 10px;
+        }
+
+        h5{
+            text-align: center;
+            font-size: 16px;
+            margin-top: 25px;
+        }
+
+        .nav-item{
+            color: white;
+            padding-right: 15px;
+        }
+
+        .icon {
+            margin-left: 7px;
+            font-size: 25px;
+        }
+
+        ::placeholder {
+            color: rgb(16, 16, 16);
+        }
+
+        .card{
+            margin-top: 60px;
+        }
+        
+        .btn-circle {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            font-size: 13px;
+        }
+
+        .btn-primary {
+            background-color: rgb(40, 39, 39); 
+            color: white; 
+            width: 200px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: none; 
+            border-radius: 20px;
+            cursor: pointer; 
+        }
+
+        table tr:last-child td {
+            background-color: #daf8ff; 
+        }
+    </style>
+    ```
+
+- [x] **Melakukan add-commit-push ke GitHub.**
+
+Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
+
+### 6. Bonus
+Memberikan warna yang berbeda (teks atau background) pada baris terakhir dari item pada inventori anda menggunakan CSS.
+Tabel daftar inventori terdapat pada halaman main, sehingga saya menambahkan code berikut pada main.html:
+```
+table tr:last-child td {
+        background-color: #daf8ff;  
+    }
+```
+- Notes: `table tr:last-child td` adalah selector CSS yang digunakan untuk menargetkan elemen-elemen <td> (sel) dalam baris terakhir (<tr>) dari sebuah tabel (<table>). Sehingga, code tersebut akan mengubah warna background dari baris terakhir tabel (dalam hal ini berisi daftar inventori).
+
+</detail>
+
+
+Tag	Description
