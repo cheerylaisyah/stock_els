@@ -936,12 +936,14 @@ Semua menggunakan `base.html` sebagai template sehingga untuk mempermudah proses
 Notes: Menggunakan inline dan internal CSS.
 
 1. 👤Login & Register
+
     Pada `login.html` dan `register.html`, saya memanfaatkan `container` untuk mengatur penempatan masing-masing form. Selain itu, saya juga mengatur `display`, `align`, `margin`, `background image`, `border`, `radius`, `button`, dan lain-lain agar form yang ditampilkan pada halaman HTML terlihat rapi dan menarik. Saya juga menambahkan icon dari Font Awesome untuk field username dan password. Walaupun pada `base.html` sudah terdapat background-image, saya ingin membuat pada kedua halaman ini memiliki background-image yang berbeda sehingga saya menambahkan kode berikut tepat di bawah `{% block content %}`:
     ```
     <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background-image: url(https://images7.alphacoders.com/115/1153599.jpg); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
     ```
 
 2. 📦Tambah Inventori
+
     Pada `create_item.html`, saya memanfaatkan card, card-title, dan card-header yang berasal dari Bootstrap untuk memberikan tampilan yang menarik untuk input new item. Selain itu, saya juga mengubah style beberapa teks untuk menonjolkan elemen penting, seperti mengatur ketebalan `<b>` dan ukuran teks `text-size`. Sama seperti halaman `login` dan `register`, saya juga mengatur `align`, `margin`, `background image`, `border`, `radius`, `button` untuk memperindah tampilan.
    
 
@@ -955,7 +957,7 @@ Notes: Menggunakan inline dan internal CSS.
 
 - [x] **Melakukan add-commit-push ke GitHub.**
 
-Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
+    Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
 
 ### 6. Bonus
 Memberikan warna yang berbeda (teks atau background) pada baris terakhir dari item pada inventori anda menggunakan CSS.
@@ -965,6 +967,6 @@ table tr:last-child td {
         background-color: #daf8ff;  
     }
 ```
-- Notes: `table tr:last-child td` adalah selector CSS yang digunakan untuk menargetkan elemen-elemen <td> (sel) dalam baris terakhir (<tr>) dari sebuah tabel (<table>). Sehingga, code tersebut akan mengubah warna background dari baris terakhir tabel (dalam hal ini berisi daftar inventori).
+- Notes: `table tr:last-child td` adalah selector CSS yang digunakan untuk menargetkan elemen-elemen `<td>` (sel) dalam baris terakhir `(<tr>)` dari sebuah tabel `(<table>)`. Sehingga, code tersebut akan mengubah warna background dari baris terakhir tabel (dalam hal ini berisi daftar inventori).
 
 </detail>
