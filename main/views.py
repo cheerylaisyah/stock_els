@@ -12,17 +12,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+# Tugas 6
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
-    total_items = items.count()
 
     context = {
         'my_name': request.user.username,
         'my_class': 'PBP C',
         'items' : items,
-        'total_items' : total_items,
+        'total_items' : items.count(),
         'last_login': request.COOKIES['last_login'],
     }
 
@@ -138,3 +140,36 @@ def edit_item(request, id):
 
     context = {'form': form}
     return render(request, "edit_item.html", context)
+
+# Mengembalikan data JSON
+def get_item_json(request):
+    product_item = Item.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        size = request.POST.get("size")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_item = Item(name=name, price=price, size=size, amount=amount, description=description, user=user)
+        new_item.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def remove_item_ajax(request, id):
+    item = Item.objects.get(pk=id)
+    item.delete()
+    response = HttpResponseRedirect(reverse("main:show_main"))
+    return response
+
+def get_total_products(request):
+    total_items = Item.objects.filter(user=request.user).count()
+    return JsonResponse({'total_items': total_items})

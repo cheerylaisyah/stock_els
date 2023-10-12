@@ -31,59 +31,148 @@
 <div class="card">
     <div class="card-body">
         <h2>Inventory Page</h2>
-        <h3 class="text-center bg-light p-3">You have {{ total_items }} total items saved!</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Size</th>
-                    <th style="text-align: center;">Amount</th>
-                    <th>Description</th>
-                    <th>Date Added</th>
-                    <th style="text-align: center;">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>Rp{{ item.price }}</td>
-                    <td class="text-center">{{ item.size }}</td>
-                    <td class="text-center">
-                        <form action="{% url 'main:decrement_item' item.id %}" method="post" style="display: inline;">
+        <div class="text-center bg-light h3" id="total-products">You have {{ total_items }} total items saved!</div>
+        <div class="row" id="item-cards"></div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
                             {% csrf_token %}
-                            <button type="submit" name="decrement" class="btn btn-danger btn-circle">-</button>
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" autocomplete="off"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="col-form-label">Price:</label>
+                                <input type="number" class="form-control" id="price" name="price"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="size" class="col-form-label">Size:</label>
+                                <input type="number" class="form-control" id="size" name="size"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="col-form-label">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="description" name="description" autocomplete="off"></textarea>
+                            </div>
                         </form>
-                        {{ item.amount }}
-                        <form action="{% url 'main:increment_item' item.id %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" name="increment" class="btn btn-success btn-circle">+</button>
-                        </form>
-                    </td>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.date_added }}</td>
-                    <td class="text-center">
-                        <a href="{% url 'main:edit_item' item.pk %}">
-                            {% csrf_token %}
-                            <button type="submit" name="edit" class="btn btn-warning">Edit</button>
-                        </a>
-                        <form action="{% url 'main:remove_item' item.pk %}" method="post" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" name="remove" class="btn btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="text-center">
-            <a href="{% url 'main:create_item' %}" class="btn btn-primary">Add New Item</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
         </div>
     </div>
+
 </div>
+
+<script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+
+    async function refreshItems() {
+        const container = document.getElementById("item-cards");
+        container.innerHTML = ""; // Clear the existing items
+
+        const items = await getItems();
+        let newestItem = items[items.length - 1];
+        
+        items.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "col-md-4";
+            
+            if (item === newestItem) {
+                card.classList.add('new-item'); // Tambahkan kelas 'new-item' untuk memberi warna berbeda
+            }
+
+            card.innerHTML = `
+                <div class="card mb-2">
+                    <div class="card-body" style="border: 1px solid #dcdcdc; border-radius: 10px; padding: 10px;">
+                        <div class="card-header">
+                            <h4 class="card-title">${item.fields.name}</h4>
+                            <h6 class="card-subtitle">${item.fields.description}</h6>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Price: Rp${item.fields.price}</li>
+                            <li class="list-group-item">Size: ${item.fields.size}</li>
+                            <li class="list-group-item">Amount: 
+                                <a href="decrement_item/${item.pk}">
+                                    <button type="submit" name="decrement" class="btn btn-danger btn-circle">-</button>
+                                </a>
+                                ${item.fields.amount}
+                                <a href="increment_item/${item.pk}">
+                                    <button type="submit" name="increment" class="btn btn-success btn-circle">+</button>
+                                </a> 
+                            </li>
+                            <li class="list-group-item">Date Added: ${item.fields.date_added}</li>
+                        </ul>
+                        <div class="card-body d-flex justify-content-center">
+                            <a href="edit-item/${item.pk}" class="mx-2">
+                                <button type="submit" name="edit" class="btn btn-warning" style="padding: 3px 10px;">
+                                    <i class="fa fa-edit"></i> Edit
+                                </button>
+                            </a>
+                            <button type="button" class="btn btn-danger" onclick="removeItem(${item.pk})" style="padding: 3px 10px;">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        refreshTotalProducts();
+    }
+    refreshItems();
+
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addItem
+
+    function removeItem(pk) {
+        var action = confirm("Are you sure you want to remove this item?");
+        if (action) {
+            fetch(`/remove_item_ajax/${pk}`, {
+                method: 'DELETE',
+            }).then(refreshItems);
+        }
+    }
+
+    function refreshTotalProducts() {
+        fetch('/get_total_products', {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('total-products').innerHTML = `You have ${data.total_items} total items saved!`;
+        })
+        .catch(error => {
+            console.error('Error refreshing total products: ', error);
+        });
+    }    
+</script>
 
 <style>
     h1{
@@ -96,6 +185,16 @@
         text-align: center;
         font-size: 16px;
         margin-top: 25px;
+    }
+
+    .card-title{
+        font-size: 18px;
+        margin-top: 5px;
+        color: rgb(41, 40, 40);
+    }
+
+    .card-subtitle{
+        color: rgb(96, 96, 96) ;
     }
 
     .nav-item{
@@ -135,8 +234,8 @@
         cursor: pointer; 
     }
 
-    table tr:last-child td {
-        background-color: #daf8ff; 
+    .new-item {
+        background-color: #daf8ff; /* Ganti warna latar belakang sesuai preferensi Anda */
     }
 </style>
 

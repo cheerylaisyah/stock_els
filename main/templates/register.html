@@ -30,6 +30,9 @@
                     </tr>
                 </table>
             </form>
+            <p style="text-align: center; margin-top: 7px; font-size: 14px;">
+                Already have an account? <a href="{% url 'main:login' %}">Login here</a>
+            </p>
             {% if messages %}
             <ul>
                 {% for message in messages %}
@@ -86,7 +89,7 @@
         background-color: rgb(40, 39, 39); 
         color: white; 
         margin-top: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: 350px;
         border: none; 
         border-radius: 20px;
