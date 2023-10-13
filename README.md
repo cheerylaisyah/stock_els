@@ -4,9 +4,9 @@
 
 **Kelas   : PBP C**
 
-# 💫👟[*Stock Els*](https://stock-els.adaptable.app/main)
+# 💫👟[*Stock Els*](https://cheeryl-aisyah-tugas.pbp.cs.ui.ac.id)
 
-## 💻Link Adaptable: https://stock-els.adaptable.app
+## 💻Link Aplikasi: https://cheeryl-aisyah-tugas.pbp.cs.ui.ac.id
 
 <details>
 <summary><b>📝Tugas 2</b></summary>
