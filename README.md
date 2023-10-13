@@ -969,4 +969,415 @@ table tr:last-child td {
 ```
 - Notes: `table tr:last-child td` adalah selector CSS yang digunakan untuk menargetkan elemen-elemen `<td>` (sel) dalam baris terakhir `(<tr>)` dari sebuah tabel `(<table>)`. Sehingga, code tersebut akan mengubah warna background dari baris terakhir tabel (dalam hal ini berisi daftar inventori).
 
-</detail>
+</details>
+
+<details>
+<summary><b>📝Tugas 6</b></summary>
+
+### 1. Jelaskan perbedaan antara asynchcronous programming dengan synchronous programming
+- Asynchronous Programming:
+    - Asynchronous programming merupakan pendekatan pemrograman yang tidak terikat pada input output (I/O) protocol.
+    - Pemrograman asynchronous tidak melakukan pekerjaannya secara old style / cara lama yaitu dengan eksekusi baris program satu persatu secara hirarki.
+    - Asynchronous programming melakukan pekerjaannya tanpa harus terikat dengan proses lain atau dapat kita sebut secara Independent.
+    - Dengan pendekatan model pemrograman Asynchronous, waktu eksekusi juga dapat menjadi lebih singkat dan cepat.
+    - Pada proses asynchronous, tidak perlu menunggu suatu fungsi selesai dijalankan untuk menjalankan fungsi lainnya (non-blocking).
+    - Cocok untuk aplikasi web yang memerlukan response time yang cepat dan efisien seperti aplikasi real-time atau streaming.
+
+- Synchronous Programming:
+    - Synchronous programming memiliki pendekatan yang lebih old style.
+    - Task akan dieksekusi satu persatu sesuai dengan urutan dan prioritas task.
+    - Memiliki kekurangan pada lama waktu eksekusi karena masing-masing task harus menunggu task lain selesai untuk diproses terlebih dahulu.
+    - Pada proses synchronous setiap fungsi dijalankan berurutan, untuk dapat menjalankan fungsi berikutnya maka kita harus menunggu fungsi sebelumnya selesai (blocking).
+    - Cocok digunakan untuk aplikasi yang memerlukan urutan eksekusi yang terstruktur dan jelas seperti mobile app atau desktop app.
+
+### 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma event-driven programming adalah cara pemrograman di mana program merespons peristiwa atau event yang terjadi, seperti tindakan pengguna (klik mouse, input keyboard, dll.) atau perubahan dalam sistem (seperti menerima data dari server). Dalam konteks JavaScript dan AJAX, program akan merespons dan bereaksi terhadap interaksi pengguna dan perubahan data.
+
+Dalam penerapannya dalam tugas ini, paradigma event-driven programming diterapkan dalam bentuk AJAX calls. Misalnya, ketika pengguna mengklik tombol “Add New Item”, sebuah event dipicu yang memunculkan modal form. Kemudian, ketika form tersebut disubmit, sebuah AJAX call dapat dibuat untuk mengirim data form ke server tanpa perlu me-refresh halaman. Server kemudian dapat merespons dengan data baru yang akan digunakan untuk memperbarui tampilan halaman web.
+
+### 3. Jelaskan penerapan asynchronous programming pada AJAX.
+Asynchronous programming pada AJAX (Asynchronous JavaScript and XML) memungkinkan aplikasi web untuk berkomunikasi dengan server secara asinkron. Artinya, aplikasi tidak perlu menunggu semua data selesai diproses sebelum melanjutkan eksekusi kode lainnya.
+
+Berikut adalah beberapa penerapan asynchronous programming dalam AJAX:
+
+1. **Pertukaran Data**: Aplikasi web yang menggunakan AJAX dapat mengirimkan dan menerima data dari server tanpa harus mereload keseluruhan halaman. Misalnya, ketika sedang mengetik kata kunci di Google, fitur Autocomplete akan menyelesaikan kata kunci untuk Anda. Meskipun kata kuncinya berubah-ubah secara real time, tampilan halamannya tetap sama.
+
+2. **Responsif dan Cepat**: Dikarenakan postback halaman dihilangkan, aplikasi yang diaktifkan AJAX akan selalu lebih responsif, lebih cepat dan lebih ramah pengguna.
+
+3. **Komunikasi Real Time**: Teknik Asynchronous banyak digunakan untuk mengelola komunikasi yang tidak mungkin sinkron atau harus menunggu seperti proses request ajax, operasi file, koneksi ke database, websocket, real time communication seperti pada aplikasi chating..
+
+Dengan demikian, asynchronous programming pada AJAX memungkinkan aplikasi web untuk berinteraksi dengan pengguna secara dinamis dan responsif tanpa perlu mereload halaman.
+
+### 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+**Fetch API**:
+- Fetch API adalah bagian dari JavaScript yang bersifat native (built-in) dan tersedia di sebagian besar modern web browser sehingga tidak perlu mengunduh atau memasang library tambahan.
+- Fetch API berbasis Promise, yang membuatnya lebih mudah digunakan dalam kode asynchronous. then() dan catch() dapat digunakan untuk menangani respons dari permintaan dan kesalahan yang mungkin terjadi.
+- Memiliki lebih banyak kendali atas permintaan dan respons. Pengaturan header, method, mode, dan lainnya dapat dilakukan dengan mudah.
+- Fetch API adalah API yang lebih ringan dibandingkan dengan jQuery, yang berarti penggunaan sumber daya yang lebih efisien.
+
+**jQuery AJAX**:
+- jQuery telah dirancang untuk berfungsi secara konsisten di berbagai browser yang berbeda. Ini mengatasi perbedaan dalam dukungan AJAX di browser lama.
+- jQuery menyediakan sintaks yang lebih sederhana dan mudah digunakan untuk melakukan permintaan AJAX.
+- jQuery memiliki berbagai fitur callback yang berguna untuk mengelola respons, kesalahan, dan penanganan sukses dengan lebih mudah.
+- jQuery memiliki banyak plugin yang dapat memperluas fungsionalitasnya, termasuk animasi, validasi, dan tugas-tugas lainnya yang berguna dalam pengembangan web.
+
+Pemilihan antara Fetch API dan jQuery AJAX sangat bergantung pada kebutuhan spesifik proyek. Kedua teknologi ini dirancang untuk mencapai tujuan yang sama, yaitu melakukan request HTTP secara asinkron, dan keduanya dapat digunakan dengan efektif dalam berbagai situasi.
+
+Jika harus memilih mana yang lebih baik untuk digunakan, saya akan memilih Fetch API. Dalam pengembangan web saat ini, menurut saya Fetch API lebih baik untuk digunakan karena selain keuntungan-keuntungan yang telah disebutkan di atas, fetch API juga lebih modern sehingga akan memudahkan kita nantinya untuk mengembangkan dan memperluas fungsionalitasnya di masa depan.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist 
+- [x] **AJAX GET**
+
+    - [x] Ubahlah kode cards data item agar dapat mendukung AJAX GET.
+
+        - Menghapus kode tabel yang telah dibuat pada tugas sebelumnya.
+        - Menambahkan kode berikut pada `main.html`:
+            ```
+            <div class="row" id="item-cards"></div>
+            ```
+    - [x] Lakukan pengambilan task menggunakan AJAX GET.
+        - Membuat fungsi `get_item_json` pada `views.py`:
+            ```
+            def get_item_json(request):
+                product_item = Item.objects.all()
+                return HttpResponse(serializers.serialize('json', product_item))
+            ```
+        - Melakukan routing pada `urls.py` di subdirektori `main` terhadap fungsi `get_item_json` dengan menambahkan kode:
+            - `from main.views import get_item_json` pada bagian atas
+            - `path('get-item/', get_item_json, name='get_item_json),` di dalam `urlpatterns`
+        - Menambahkan kode berikut di dalam blok `<script>` pada `main.html`:
+            ```
+            async function getItems() {
+                return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+            }
+            ```
+- [x] **AJAX POST**
+
+    - [x] Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.
+        Pada `main.html`:
+        - Membuat modal dengan menambahkan kode berikut:
+            ```
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="form" onsubmit="return false;">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="name" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="name" autocomplete="off"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price" class="col-form-label">Price:</label>
+                                    <input type="number" class="form-control" id="price" name="price"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="size" class="col-form-label">Size:</label>
+                                    <input type="number" class="form-control" id="size" name="size"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="amount" class="col-form-label">Amount:</label>
+                                    <input type="number" class="form-control" id="amount" name="amount"></input>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="col-form-label">Description:</label>
+                                    <textarea class="form-control" id="description" name="description" autocomplete="off"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            ```
+        - Menambahkan button untuk mengakses modal dengan menambahkan kode berikut:
+            ```
+            <div class="text-center">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+            </div>
+            ```
+
+    - [x] Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data.
+        - Import `from django.views.decorators.csrf`
+        - Pada `views.py`, buat fungsi `add_item_ajax` dan buatlah menjadi seperti ini:
+            ```
+            @csrf_exempt
+            def add_item_ajax(request):
+                if request.method == 'POST':
+                    name = request.POST.get("name")
+                    price = request.POST.get("price")
+                    size = request.POST.get("size")
+                    amount = request.POST.get("amount")
+                    description = request.POST.get("description")
+                    user = request.user
+
+                    new_item = Item(name=name, price=price, size=size, amount=amount, description=description, user=user)
+                    new_item.save()
+
+                    return HttpResponse(b"CREATED", status=201)
+
+                return HttpResponseNotFound()
+            ```
+    - [x] Buatlah path `/create-ajax/` yang mengarah ke fungsi view yang baru kamu buat.
+        - Pada `urls.py` import fungsi `add_item_ajax` lalu lakukan routing dengan menambahkan kode berikut pada `urlpattern`:
+            ```
+            path('create-ajax/', add_item_ajax, name='add_item_ajax'),
+            ```
+
+    - [x] Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+
+        Pada `main.html`, tambahkan fungsi `addItem` di dalam blok `<script>`, sebagai berikut:
+        ```
+        function addItem() {
+            fetch("{% url 'main:add_item_ajax' %}", {
+                method: "POST",
+                body: new FormData(document.querySelector('#form'))
+            }).then(refreshItems)
+
+            document.getElementById("form").reset()
+            return false
+        }
+        document.getElementById("button_add").onclick = addItem
+        ```
+    - [x] Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.
+    
+        Pada `main.html`, tambahkan fungsi `refreshItems` di dalam blok `<script>`, sebagai berikut:
+        ```
+        async function refreshItems() {
+            const container = document.getElementById("item-cards");
+            container.innerHTML = ""; // Clear the existing items
+
+            const items = await getItems();
+            let newestItem = items[items.length - 1];
+            
+            items.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "col-md-4";
+                
+                if (item === newestItem) {
+                    card.classList.add('new-item'); // Tambahkan kelas 'new-item' untuk memberi warna berbeda
+                }
+
+                card.innerHTML = `
+                    <div class="card mb-2">
+                        <div class="card-body" style="border: 1px solid #dcdcdc; border-radius: 10px; padding: 10px;">
+                            <div class="card-header">
+                                <h4 class="card-title">${item.fields.name}</h4>
+                                <h6 class="card-subtitle">${item.fields.description}</h6>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Price: Rp${item.fields.price}</li>
+                                <li class="list-group-item">Size: ${item.fields.size}</li>
+                                <li class="list-group-item">Amount: 
+                                    <a href="decrement_item/${item.pk}">
+                                        <button type="submit" name="decrement" class="btn btn-danger btn-circle">-</button>
+                                    </a>
+                                    ${item.fields.amount}
+                                    <a href="increment_item/${item.pk}">
+                                        <button type="submit" name="increment" class="btn btn-success btn-circle">+</button>
+                                    </a> 
+                                </li>
+                                <li class="list-group-item">Date Added: ${item.fields.date_added}</li>
+                            </ul>
+                            <div class="card-body d-flex justify-content-center">
+                                <a href="edit-item/${item.pk}" class="mx-2">
+                                    <button type="submit" name="edit" class="btn btn-warning" style="padding: 3px 10px;">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </button>
+                                </a>
+                                <button type="button" class="btn btn-danger" onclick="removeItem(${item.pk})" style="padding: 3px 10px;">
+                                    <i class="fa fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            refreshTotalProducts();
+        }
+        ```
+
+- [x] **Melakukan perintah collectstatic.**
+    - Pada `setting.py`, tambahkan kode berikut:
+        ```
+        STATIC_URL = 'static/'
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+        ```
+    - Jalankan `python manage.py collect static` 
+- [x] **Melakukan add-commit-push ke GitHub.**
+     
+     Pada *root folder*, lakukan add-commit-push ke dalam repository GitHub yang telah ditetapkan di awal.
+
+- [x] **Melakukan deployment ke PaaS PBP Fasilkom UI dan sertakan tautan aplikasi pada file README.md.**
+
+    - Pada file `requirements.txt` pada root folder, tambahkan `django-environ` dan jalankan perintah `pip install -r requirements.txt`
+    - Buat berkas `Procfile` pada root folder dan isi dengan kode berikut:
+        ```
+        release: django-admin migrate --noinput
+        web: gunicorn stock_els.wsgi
+        ```
+    - Buat folder baru `.github` pada root folder dan buat kembali folder baru dengan nama `workflows`.
+    - Buat berkas `pbp-deploy.yml` dalam `.github/workflows` dan isi dengan kode berikut:
+        ```
+        name: Deploy
+
+        on:
+        push:
+            branches:
+            - main
+            - master
+
+        jobs:
+        Deployment:
+            if: github.ref == 'refs/heads/main'
+            runs-on: ubuntu-latest
+            steps:
+            - name: Cloning repo
+            uses: actions/checkout@v4
+            with:
+                fetch-depth: 0
+
+            - name: Push to Dokku server
+            uses: dokku/github-action@master
+            with:
+                branch: 'main'
+                git_remote_url: ssh://dokku@${{ secrets.DOKKU_SERVER_IP }}/${{ secrets.DOKKU_APP_NAME }}
+                ssh_private_key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+        ```
+    - Buat file baru bernama `.dockerignore` pada root folder dan isi dengan kode berikut:
+        ```
+        **/*.pyc
+        **/*.pyo
+        **/*.mo
+        **/*.db
+        **/*.css.map
+        **/*.egg-info
+        **/*.sql.gz
+        **/__pycache__/
+        .cache
+        .project
+        .idea
+        .pydevproject
+        .idea/workspace.xml
+        .DS_Store
+        .git/
+        .sass-cache
+        .vagrant/
+        dist
+        docs
+        env
+        logs
+        src/{{ stock_els }}/settings/local.py
+        src/node_modules
+        web/media
+        web/static/CACHE
+        stats
+        Dockerfile
+        .gitignore
+        Dockerfile
+        db.sqlite3
+        **/*.md
+        logs/
+        ``` 
+    - Buat file baru dengan nama `Dockerfile` pada root folder dan isi dengan kode berikut:
+        ```
+        FROM python:3.10-slim-buster
+
+        WORKDIR /app
+
+        ENV PYTHONUNBUFFERED=1 \
+            PYTHONPATH=/app \
+            DJANGO_SETTINGS_MODULE=stock_els.settings \
+            PORT=8000 \
+            WEB_CONCURRENCY=2
+
+        # Install system packages required Django.
+        RUN apt-get update --yes --quiet && apt-get install --yes --quiet --no-install-recommends \
+        && rm -rf /var/lib/apt/lists/*
+
+        RUN addgroup --system django \
+            && adduser --system --ingroup django django
+
+        # Requirements are installed here to ensure they will be cached.
+        COPY ./requirements.txt /requirements.txt
+        RUN pip install -r /requirements.txt
+
+        # Copy project code
+        COPY . .
+
+        RUN python manage.py collectstatic --noinput --clear
+
+        # Run as non-root user
+        RUN chown -R django:django /app
+        USER django
+
+        # Run application
+        # CMD gunicorn stock_els.wsgi:application
+        ```
+    - Pada `settings.py`, tambahkan kode berikut:
+        ```
+        import environ 
+        import os
+        ...
+
+        BASE_DIR = Path(__file__).resolve().parent.parent # Sudah ada
+
+        env = environ.Env() 
+        ...
+        # Tambahkan setelah baris kode `SECRET_KEY`
+        # Automatically determine environment by detecting if DATABASE_URL variable.
+        # DATABASE_URL is provided by Heroku if a database add-on is added (e.g. Heroku Postgres).
+        PRODUCTION = env.bool('PRODUCTION', False)
+        ...
+        # Tambahkan setelah bagian kode `DATABASES`
+        # Set database settings automatically using DATABASE_URL.
+        if PRODUCTION:
+            DATABASES = {
+                'default': env.db('DATABASE_URL')
+            }
+            DATABASES["default"]["ATOMIC_REQUESTS"] = True
+        ...
+        ```
+    - Buat repository secret Github dari aplikasi dan masukkan tiga variabel, yaitu: `DOKKU_SERVER_IP` --> (pbp.cs.ui.ac.id), `DOKKU_APP_NAME` --> (cheeryl-aisyah-tugas), `DOKKU_SSH_PRIVATE_KEY` --> (ssh_key)
+
+### 6. Menambahkan fungsionalitas hapus dengan menggunakan AJAX DELETE
+- Pada `views.py`, buat fungsi `remove_item_ajax`
+    ```
+    @csrf_exempt
+    def remove_item_ajax(request, id):
+        item = Item.objects.get(pk=id)
+        item.delete()
+        response = HttpResponseRedirect(reverse("main:show_main"))
+        return response
+    ```
+- Pada `urls.py` import fungsi `remove_item_ajax` lalu lakukan routing dengan menambahkan kode berikut pada `urlpattern`:
+    ```
+    path('remove_item_ajax/<int:id>', remove_item_ajax, name='remove_item_ajax'),
+    ```
+- Pada `main.html` di dalam blok `<script>` tambahkan kode berikut:
+    ```
+    function removeItem(pk) {
+        var action = confirm("Are you sure you want to remove this item?");
+        if (action) {
+            fetch(`/remove_item_ajax/${pk}`, {
+                method: 'DELETE',
+            }).then(refreshItems);
+        }
+    }
+    ```
+- Pada `main.html` di dalam fungsi `refreshItems`, tambahkan kode berikut:
+    ```
+    <button type="button" class="btn btn-danger" onclick="removeItem(${item.pk})" style="padding: 3px 10px;">
+        <i class="fa fa-trash"></i> Delete
+    </button>
+    ```
+</details>
