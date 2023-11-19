@@ -1,10 +1,10 @@
 import datetime
+import json
 from main.forms import ItemForm
 from .models import Item
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.urls import reverse
-from django.http import HttpResponse
 from django.core import serializers
 # Tugas 4
 from django.shortcuts import redirect
@@ -173,3 +173,24 @@ def remove_item_ajax(request, id):
 def get_total_products(request):
     total_items = Item.objects.filter(user=request.user).count()
     return JsonResponse({'total_items': total_items})
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = Item.objects.create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["price"]),
+            size = int(data["size"]),
+            amount = int(data["amount"]),
+            description = data["description"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
