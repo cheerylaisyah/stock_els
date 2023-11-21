@@ -30,6 +30,7 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
+@csrf_exempt
 def create_item(request):
     form = ItemForm(request.POST or None)
 
@@ -61,6 +62,7 @@ def show_json_by_id(request, id):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 # Tugas 4
+@csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -75,6 +77,7 @@ def register(request):
 
     return render(request, 'register.html', context)
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -91,6 +94,7 @@ def login_user(request):
 
     return render(request, 'login.html', context)
 
+@csrf_exempt
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('main:login'))
@@ -143,7 +147,7 @@ def edit_item(request, id):
 
 # Mengembalikan data JSON
 def get_item_json(request):
-    product_item = Item.objects.all()
+    product_item = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', product_item))
 
 @csrf_exempt
