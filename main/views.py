@@ -62,7 +62,6 @@ def show_json_by_id(request, id):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 # Tugas 4
-@csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -77,7 +76,6 @@ def register(request):
 
     return render(request, 'register.html', context)
 
-@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
